@@ -18,7 +18,7 @@ pub type Page {
 
 // CONSTRUCTORS ----------------------------------------------------------------
 
-pub fn add_routes(config: Config(a, b)) -> Config(HasStaticRoutes, b) {
+pub fn add_routes(config: Config(a, b, c)) -> Config(HasStaticRoutes, b, c) {
   config
   |> ssg.add_static_route("/", layout.homepage("./content/docs/quickstart.md"))
   |> list.fold(api, _, add_route)
@@ -26,7 +26,10 @@ pub fn add_routes(config: Config(a, b)) -> Config(HasStaticRoutes, b) {
   |> list.fold(guides, _, add_route)
 }
 
-fn add_route(config: Config(a, b), page: Page) -> Config(HasStaticRoutes, b) {
+fn add_route(
+  config: Config(a, b, c),
+  page: Page,
+) -> Config(HasStaticRoutes, b, c) {
   ssg.add_static_route(config, page.route, page.render(page))
 }
 

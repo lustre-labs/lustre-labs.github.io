@@ -12,8 +12,9 @@ pub fn main() {
   let argv = shellout.arguments()
 
   ssg.new("./docs")
-  |> ssg.add_static_dir("./static")
   |> page.add_routes
+  |> ssg.add_static_dir("./static")
+  |> ssg.use_index_routes
   |> ssg.build
 
   bool.guard(!list.contains(argv, "--build-assets"), Nil, build_assets)
