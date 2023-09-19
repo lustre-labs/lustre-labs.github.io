@@ -12,28 +12,28 @@ import shellout
 const outdir = "./docs"
 
 const lustre_api = [
-  #("attribute", "../content/api/lustre/attribute.md"),
-  #("effect", "../content/api/lustre/effect.md"),
-  #("element", "../content/api/lustre/element.md"),
-  #("event", "../content/api/lustre/event.md"),
+  #("attribute", "./content/api/lustre/attribute.md"),
+  #("effect", "./content/api/lustre/effect.md"),
+  #("element", "./content/api/lustre/element.md"),
+  #("event", "./content/api/lustre/event.md"),
 ]
 
 const element_api = [
-  #("html", "../content/api/lustre/element/html.md"),
-  #("svg", "../content/api/lustre/element/svg.md"),
+  #("html", "./content/api/lustre/element/html.md"),
+  #("svg", "./content/api/lustre/element/svg.md"),
 ]
 
 const docs = [
-  #("components", "../content/docs/components.md"),
-  #("managing-state", "../content/docs/managing-state.md"),
-  #("quickstart", "../content/docs/quickstart.md"),
-  #("server-side-rendering", "../content/docs/server-side-rendering.md"),
-  #("side-effects", "../content/docs/side-effects.md"),
+  #("components", "./content/docs/components.md"),
+  #("managing-state", "./content/docs/managing-state.md"),
+  #("quickstart", "./content/docs/quickstart.md"),
+  #("server-side-rendering", "./content/docs/server-side-rendering.md"),
+  #("side-effects", "./content/docs/side-effects.md"),
 ]
 
 const guides = [
-  #("mist", "../content/guides/mist.md"),
-  #("wisp", "../content/guides/wisp.md"),
+  #("mist", "./content/guides/mist.md"),
+  #("wisp", "./content/guides/wisp.md"),
 ]
 
 // MAIN ------------------------------------------------------------------------
@@ -44,8 +44,8 @@ pub fn main() {
   let api = layout.page(_, True)
 
   ssg.new(outdir)
-  |> ssg.add_static_route("/", layout.homepage("../content/docs/quickstart.md"))
-  |> ssg.add_static_route("/api/lustre", page("../content/api/lustre.md"))
+  |> ssg.add_static_route("/", layout.homepage("./content/docs/quickstart.md"))
+  |> ssg.add_static_route("/api/lustre", page("./content/api/lustre.md"))
   |> ssg.add_dynamic_route("/api/lustre", map.from_list(lustre_api), api)
   |> ssg.add_dynamic_route(
     "/api/lustre/element",
