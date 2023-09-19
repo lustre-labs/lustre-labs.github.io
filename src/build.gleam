@@ -12,6 +12,7 @@ pub fn main() {
   let argv = shellout.arguments()
 
   ssg.new("./docs")
+  |> ssg.add_static_dir("./static")
   |> page.add_routes
   |> ssg.build
 
