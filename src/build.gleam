@@ -1,67 +1,18 @@
 // IMPORTS ---------------------------------------------------------------------
 
-import app/layout
+import app/page
 import gleam/bool
 import gleam/list
-import gleam/map
 import lustre/ssg
 import shellout
-
-// CONSTANTS -------------------------------------------------------------------
-
-const outdir = "./docs"
-
-const lustre_api = [
-  #("attribute", "./content/api/lustre/attribute.md"),
-  #("effect", "./content/api/lustre/effect.md"),
-  #("element", "./content/api/lustre/element.md"),
-  #("event", "./content/api/lustre/event.md"),
-]
-
-const element_api = [
-  #("html", "./content/api/lustre/element/html.md"),
-  #("svg", "./content/api/lustre/element/svg.md"),
-]
-
-const docs = [
-  #("components", "./content/docs/components.md"),
-  #("managing-state", "./content/docs/managing-state.md"),
-  #("quickstart", "./content/docs/quickstart.md"),
-  #("server-side-rendering", "./content/docs/server-side-rendering.md"),
-  #("side-effects", "./content/docs/side-effects.md"),
-]
-
-const guides = [
-  #("mist", "./content/guides/mist.md"),
-  #("wisp", "./content/guides/wisp.md"),
-]
 
 // MAIN ------------------------------------------------------------------------
 
 pub fn main() {
   let argv = shellout.arguments()
 
-  let page = layout.page(_, transform_type_headings: False)
-  // Ids for heading elements are always lowercased and hyphenated. This can cause
-  // conflicts on api pages where a type and a function have the same name, like
-  // `Effect` and `effect`. 
-  //
-  // Passing `True` to this flag means type headings are transformed by appending
-  // "-type" such that `Effect` becomes `effect-type`.
-  // 
-  let api_page = layout.page(_, transform_type_headings: True)
-
-  ssg.new(outdir)
-  |> ssg.add_static_route("/", layout.homepage("./content/docs/quickstart.md"))
-  |> ssg.add_static_route("/api/lustre", api_page("./content/api/lustre.md"))
-  |> ssg.add_dynamic_route("/api/lustre", map.from_list(lustre_api), api_page)
-  |> ssg.add_dynamic_route(
-    "/api/lustre/element",
-    map.from_list(element_api),
-    api_page,
-  )
-  |> ssg.add_dynamic_route("/docs", map.from_list(docs), page)
-  |> ssg.add_dynamic_route("/guides", map.from_list(guides), page)
+  ssg.new("./docs")
+  |> page.add_routes
   |> ssg.build
 
   bool.guard(!list.contains(argv, "--build-assets"), Nil, build_assets)
@@ -79,14 +30,14 @@ fn build_assets() {
 
 fn build_tailwind() {
   let input = "./src/styles.css"
-  let output = outdir <> "/styles.css"
+  let output = "./docs/styles.css"
 
   shellout.command("npx", ["tailwindcss", "-i", input, "-o", output], ".", [])
 }
 
 fn build_javascript() {
   let input = "./src/app.mjs"
-  let output = outdir <> "/app.js"
+  let output = "./docs/app.js"
 
   shellout.command(
     "npx",
@@ -99,8 +50,7 @@ fn build_javascript() {
 // SERVE -----------------------------------------------------------------------
 
 fn serve() {
-  let assert Ok(_) = shellout.command("npx", ["http-server", outdir], ".", [])
+  let assert Ok(_) = shellout.command("npx", ["http-server", "./docs"], ".", [])
 
   Nil
 }
-// 
