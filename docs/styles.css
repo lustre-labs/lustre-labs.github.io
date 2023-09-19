@@ -1142,6 +1142,10 @@ pre code.hljs {
   padding: unset;
 }
 
+.static{
+  position:static
+}
+
 .absolute{
   position:absolute
 }
