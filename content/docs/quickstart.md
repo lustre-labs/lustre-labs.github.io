@@ -64,7 +64,7 @@ of the project. This is the minimal code you'll typically want to get started:
 We wait until the DOM has loaded before calling the our app's `main` function.
 This will mount the Lustre app and start rendering. We also add the `data-lustre-app`
 attribute to the element we want to mount the app to. You could use a class or an
-id instead, or none of that: [`lustre.start`](/api/lustre.html#start) takes a CSS
+id instead, or none of that: [`lustre.start`](/api/lustre#start) takes a CSS
 selector so go wild!
 
 ### Hello, world!
@@ -86,8 +86,8 @@ pub fn main() {
 
 This will create a static Lustre app and mount it onto the element that matches
 the CSS selector. While we're asserting everything is OK here, it is possible
-for [`lustre.start`](/api/lustre.html#start) to fail in a couple of ways. Check
-out the docs for the [`lustre.Error`](/api/lustre.html#error-type) type if you
+for [`lustre.start`](/api/lustre#start) to fail in a couple of ways. Check
+out the docs for the [`lustre.Error`](/api/lustre#error-type) type if you
 want to know more.
 
 Run `gleam build` and serve the HTML with your preferred static file server (this
@@ -173,7 +173,7 @@ new Gleam project and adding Lustre as a dependency:
 $ gleam new lustre_quickstart && cd lustre_quickstart && gleam add lustre
 ```
 
-The [`lustre/element`](/api/lustre/element.html) module contains functions to
+The [`lustre/element`](/api/lustre/element) module contains functions to
 render an element as either a `String` or `StringBuilder`. Copy the following code
 into `lustre_quickstart.gleam`:
 
@@ -198,10 +198,10 @@ pub fn main() {
 ```
 
 We can test this out by running `gleam run` and seeing the HTML printed to the
-console. From here we could set up a web server using [Mist](/guides/mist.html)
-or [Wisp](/guides/wisp.html) to serve the HTML to the browser or write it to a
-file using [simplifile](https://hexdocs.pm/simplifile/). Because the API is the
-same for both client and server rendering, it is easy to create reusable components
+console. From here we could set up a web server using [Mist](/guides/mist)
+or [Wisp](/guides/wisp) to serve the HTML to the browser or write it to a file
+using [simplifile](https://hexdocs.pm/simplifile/). Because the API is the same
+for both client and server rendering, it is easy to create reusable components
 that can be rendered anywhere Gleam can run!
 
 ### An example with Wisp

@@ -125,9 +125,9 @@ pub fn view(model: Model) -> Element(Msg) {
 }
 ```
 
-Note that we're using [`element.map`](/api/lustre/element.html#map) to map the events
+Note that we're using [`element.map`](/api/lustre/element#map) to map the events
 from each counter view to a `Msg` type our application understands! In Lustre,
-the [`Element`](/api/lustre/element.html#element-type) type is parameterised by the
+the [`Element`](/api/lustre/element#element-type) type is parameterised by the
 type of messages they can emit. This is how Lustre achieves type-safe event handling.
 
 This approach can get quite sophisticated. For example you may want to make your
@@ -163,7 +163,7 @@ wouldn't be able to mess with the internal state in any other way.
 
 After a while you may you find your semi-encapsulated components have a lot of
 internal state or many messages that are only relevant to that component. If that
-happens, it may be time to consider a [stateful component](/docs/components.html)
+happens, it may be time to consider a [stateful component](/docs/components)
 instead.
 
 ## Separating page state
