@@ -50,7 +50,10 @@ pub fn homepage(content_path: String) -> Element(Nil) {
   )
 }
 
-pub fn page(content_path: String, is_api: Bool) -> Element(Nil) {
+pub fn page(
+  content_path: String,
+  transform_type_headings is_api: Bool,
+) -> Element(Nil) {
   let assert Ok(md) = simplifile.read(content_path)
   let #(content, summary) = parse_md(md, is_api)
   let #(attrs, content) = body(content, summary)
