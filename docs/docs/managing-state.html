@@ -1,0 +1,154 @@
+<html lang="en" class="overflow-x-hidden"><head><title>test</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="/styles.css" rel="stylesheet"><script src="/app.js" type="module"></script></head><body class="prose prose-lustre max-w-none"><div class="max-w-[96rem] mx-auto grid grid-cols-8"><aside style="align-self:start;" class="relative sticky top-0 hidden px-4 pb-10 h-screen lg:block lg:col-span-2 xl:col-span-2"><div class="absolute right-0 inset-y-0 w-[50vw] bg-gradient-to-b from-white to-gray-100 -z-10"></div><div class="flex flex-col h-full overflow-y-scroll"><h2 class="mb-0"><a href="/" class="text-indigo-600 no-underline">Lustre</a></h2><p class="text-gray-400 font-bold">Web apps from space.</p><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Docs</h2><ul class="ml-2"><li><a href="/docs/quickstart.html" class="font-serif">Quickstart</a></li><li><a href="/docs/managing-state.html" class="font-serif">Managing state</a></li><li><a href="/docs/side-effects.html" class="font-serif">Side effects</a></li><li><a href="/docs/components.html" class="font-serif">Components</a></li><li><a href="/docs/server-side-rendering.html" class="font-serif">Server-side rendering</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Guides</h2><ul class="ml-2"><li><a href="/guides/mist.html" class="font-serif">Using with Mist</a></li><li><a href="/guides/wisp.html" class="font-serif">Using with Wisp</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Reference</h2><ul class="ml-2"><li><a href="/api/lustre.html" class="font-serif">lustre</a></li><li><a href="/api/lustre/attribute.html" class="font-serif">lustre/attribute</a></li><li><a href="/api/lustre/effect.html" class="font-serif">lustre/effect</a></li><li><a href="/api/lustre/element.html" class="font-serif">lustre/element</a></li><li><a href="/api/lustre/element/html.html" class="font-serif">lustre/element/html</a></li><li><a href="/api/lustre/element/svg.html" class="font-serif">lustre/element/svg</a></li><li><a href="/api/lustre/event.html" class="font-serif">lustre/event</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">External</h2><ul class="ml-2"><li><a href="https://github.com/hayleigh-dot-dev/gleam-lustre" class="font-serif">GitHub</a></li><li><a href="https://discord.gg/Fm8Pwmy" class="font-serif">Discord</a></li><li><a href="https://github.com/sponsors/hayleigh-dot-dev" class="font-serif">Buy me a coffee?</a></li></ul></nav></div></aside><main class="col-span-8 pt-4 px-4 pb-32 lg:px-8 lg:col-span-6 xl:col-span-5"><h1 class="flex items-center justify-between" id="managing-state"><span class="group">Managing state<a href="#managing-state" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h1><p>We saw in the quickstart guide that Lustre applications are built using the
+Model-View-Update architecture. For folks used to building with React or most
+other frontend frameworks, it can be a bit of a shock to work without access to
+local component state.</p><p>In this guide we&#x27;ll look at how to manage state in a variety of scenarios
+<em>without</em> using local component state. It&#x27;s important to get a solid grasp on
+this <em>before</em> looking at Lustre&#x27;s approach to components because they&#x27;re built on
+the same principles!</p><h2 class="flex items-center justify-between border-t" id="semi-encapsulated-components"><span class="group">Semi-encapsulated components<a href="#semi-encapsulated-components" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h2><p>Before reaching for Lustre&#x27;s stateful components, you might consider a
+semi-encapsulated approach. This is where you have a separate Gleam module that
+defines it&#x27;s own <code>Model</code>, <code>init</code>, <code>Msg</code>, and <code>update</code> (and optionally a <code>view</code>
+too) but still manage things from your top-level application.</p><p>For example, we may define a <code>counter</code> module:</p><pre class="rounded-xl"><code data-hash="-109973824" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">// app/counter.gleam
+
+import gleam/int
+import lustre/element.{Element}
+import lustre/element/html
+import lustre/event
+
+pub opaque type Model {
+  Model(Int)
+}
+
+pub fn init() -&gt; Model {
+  Model(0)
+}
+
+pub type Msg {
+  Incr
+  Decr
+  Double
+  Reset
+}
+
+pub fn update(model: Model, msg: Msg) -&gt; Model {
+  let Model(count) = model
+  case msg {
+    Incr -&gt; Model(count + 1)
+    Decr -&gt; Model(count - 1)
+    Double -&gt; Model(count * 2)
+    Reset -&gt; Model(0)
+  }
+}
+
+pub fn view(model: Model) -&gt; Element(Msg) {
+  let Model(count) = model
+  let count = int.to_string(count)
+
+  html.div([], [
+    html.p([], [element.text(count)]),
+    html.button([event.on_click(Decr)], [html.text(&quot;-&quot;)]),
+    html.button([event.on_click(Incr)], [html.text(&quot;+&quot;)]),
+    html.button([event.on_click(Double)], [html.text(&quot;x2&quot;)]),
+    html.button([event.on_click(Reset)], [html.text(&quot;Reset&quot;)]),
+  ])
+}</code></pre><p>Now we can create and manage multiple counters in our main application:</p><pre class="rounded-xl"><code data-hash="1339666631" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">// app.gleam
+
+import app/counter
+import lustre
+import lustre/element.{Element}
+import lustre/element/html
+
+pub fn main() {
+  let app = lustre.simple(init, update, view)
+  let assert Ok(_) = lustre.start(app, &quot;[data-lustre-app]&quot;, Nil)
+}
+
+pub type Model {
+  Model(
+    // Our model will hold two separate counters, each with their own independent
+    // state.
+    counter1: counter.Model,
+    counter2: counter.Model,
+  )
+}
+
+pub fn init() -&gt; Model {
+  Model(
+    counter.init(),
+    counter.init(),
+  )
+}
+
+pub type Msg {
+  //
+  Counter1(counter.Msg)
+  Counter2(counter.Msg)
+}
+
+pub fn update(model: Model, msg: Msg) -&gt; Model {
+  case msg {
+    Counter1(msg) -&gt; Model(..model,
+      counter1: counter.update(model.counter1, msg)
+    )
+
+    Counter2(msg) -&gt; Model(..model,
+      counter2: counter.update(model.counter2, msg)
+    )
+  }
+}
+
+pub fn view(model: Model) -&gt; Element(Msg) {
+  let Model(counter1, counter2) = model
+
+  html.div([], [
+    counter.view(counter1) |&gt; element.map(Counter1),
+    counter.view(counter2) |&gt; element.map(Counter2),
+  ])
+}</code></pre><p>Note that we&#x27;re using <a href="/api/lustre/element.html#map"><code>element.map</code></a> to map the events
+from each counter view to a <code>Msg</code> type our application understands! In Lustre,
+the <a href="/api/lustre/element.html#element-type"><code>Element</code></a> type is parameterised by the
+type of messages they can emit. This is how Lustre achieves type-safe event handling.</p><p>This approach can get quite sophisticated. For example you may want to make your
+component&#x27;s <code>Model</code> type opaque and optionally provide some helper functions to
+extract any data parents may need to know about. You might also choose to split
+your component&#x27;s <code>Msg</code> type and keep a separate <code>InternalMsg</code> type that can&#x27;t
+be constructed outside of the module.</p><p>Taking the counter example from above, perhaps we want parents to only be able to
+reset the counter and query the current count, but all other messages are handled
+internally:</p><pre class="rounded-xl"><code data-hash="1320986399" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">pub type Msg {
+  Reset
+  Internal(InternalMsg)
+}
+
+pub opaque type InternalMsg {
+  Incr
+  Decr
+  Double
+}
+
+pub fn count(model: Model) -&gt; Int {
+  let Model(count) = model
+  count
+}</code></pre><p>The parent could still have a button to reset all counters back to <code>0</code>, but it
+wouldn&#x27;t be able to mess with the internal state in any other way.</p><p>After a while you may you find your semi-encapsulated components have a lot of
+internal state or many messages that are only relevant to that component. If that
+happens, it may be time to consider a <a href="/docs/components.html">stateful component</a>
+instead.</p><h2 class="flex items-center justify-between border-t" id="separating-page-state"><span class="group">Separating page state<a href="#separating-page-state" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h2><pre class="rounded-xl"><code data-hash="-1762939968" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">type Model {
+
+}</code></pre><h2 class="flex items-center justify-between border-t" id="preserving-state-across-page-changes"><span class="group">Preserving state across page changes<a href="#preserving-state-across-page-changes" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h2><pre class="rounded-xl"><code data-hash="321425009" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">type Model = Map(String, PageModel)
+
+type PageModel {
+
+}</code></pre><h2 class="flex items-center justify-between border-t" id="sharing-state-between-pages"><span class="group">Sharing state between pages<a href="#sharing-state-between-pages" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h2><pre class="rounded-xl"><code data-hash="-1511608536" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">import gleam/map.{Map}
+
+type Model {
+  Model(
+    shared: SharedModel,
+    pages: Map(String, PageModel)
+  )
+}
+
+type SharedModel {
+  SharedModel()
+}
+
+type PageModel {
+
+}</code></pre></main><aside style="align-self:start;" class="sticky relative top-0 hidden p-4 py-10 h-screen xl:block xl:col-span-1"><div class="absolute left-0 inset-y-0 w-[50vw] bg-gradient-to-b from-white to-gray-100 -z-10"></div><div class="flex flex-col h-full overflow-y-scroll"><a href="#semi-encapsulated-components" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">Semi-encapsulated components</a><a href="#separating-page-state" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">Separating page state</a><a href="#preserving-state-across-page-changes" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">Preserving state across page changes</a><a href="#sharing-state-between-pages" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">Sharing state between pages</a></div></aside></div></body></html>

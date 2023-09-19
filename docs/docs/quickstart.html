@@ -1,0 +1,181 @@
+<html lang="en" class="overflow-x-hidden"><head><title>test</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="/styles.css" rel="stylesheet"><script src="/app.js" type="module"></script></head><body class="prose prose-lustre max-w-none"><div class="max-w-[96rem] mx-auto grid grid-cols-8"><aside style="align-self:start;" class="relative sticky top-0 hidden px-4 pb-10 h-screen lg:block lg:col-span-2 xl:col-span-2"><div class="absolute right-0 inset-y-0 w-[50vw] bg-gradient-to-b from-white to-gray-100 -z-10"></div><div class="flex flex-col h-full overflow-y-scroll"><h2 class="mb-0"><a href="/" class="text-indigo-600 no-underline">Lustre</a></h2><p class="text-gray-400 font-bold">Web apps from space.</p><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Docs</h2><ul class="ml-2"><li><a href="/docs/quickstart.html" class="font-serif">Quickstart</a></li><li><a href="/docs/managing-state.html" class="font-serif">Managing state</a></li><li><a href="/docs/side-effects.html" class="font-serif">Side effects</a></li><li><a href="/docs/components.html" class="font-serif">Components</a></li><li><a href="/docs/server-side-rendering.html" class="font-serif">Server-side rendering</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Guides</h2><ul class="ml-2"><li><a href="/guides/mist.html" class="font-serif">Using with Mist</a></li><li><a href="/guides/wisp.html" class="font-serif">Using with Wisp</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">Reference</h2><ul class="ml-2"><li><a href="/api/lustre.html" class="font-serif">lustre</a></li><li><a href="/api/lustre/attribute.html" class="font-serif">lustre/attribute</a></li><li><a href="/api/lustre/effect.html" class="font-serif">lustre/effect</a></li><li><a href="/api/lustre/element.html" class="font-serif">lustre/element</a></li><li><a href="/api/lustre/element/html.html" class="font-serif">lustre/element/html</a></li><li><a href="/api/lustre/element/svg.html" class="font-serif">lustre/element/svg</a></li><li><a href="/api/lustre/event.html" class="font-serif">lustre/event</a></li></ul></nav><nav><h2 class="my-0 lg:mt-8 lg:mb-4">External</h2><ul class="ml-2"><li><a href="https://github.com/hayleigh-dot-dev/gleam-lustre" class="font-serif">GitHub</a></li><li><a href="https://discord.gg/Fm8Pwmy" class="font-serif">Discord</a></li><li><a href="https://github.com/sponsors/hayleigh-dot-dev" class="font-serif">Buy me a coffee?</a></li></ul></nav></div></aside><main class="col-span-8 pt-4 px-4 pb-32 lg:px-8 lg:col-span-6 xl:col-span-5"><h1 class="flex items-center justify-between" id="quickstart"><span class="group">Quickstart<a href="#quickstart" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"></p></h1><p>Lustre is a frontend web framework for Gleam. It is primarily focused on helping
+you build robust single-page applications (SPAs), but it can also be used on the
+server to render static HTML. To get an idea of what it&#x27;s all about, here&#x27;s a
+quick overview of Lustre&#x27;s key features:</p><ul><li><p>Elm-inspired runtime with state management and controlled side effects out of
+the box.</p></li><li><p>A simple, declarative API for building type-safe user interfaces.</p></li><li><p>Stateful components built as custom elements and useable just like any other
+HTML element.</p></li><li><p>Static HTML rendering anywhere Gleam can run: the BEAM, Node.js, Deno, or the
+browser.</p></li></ul><p>In this quickstart guide we&#x27;ll take a look at how to get up and running with
+Lustre in both the browser and on the server.</p><h2 class="flex items-center justify-between border-t" id="in-the-browser"><span class="group">In the browser<a href="#in-the-browser" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"><span class="px-2 py-1 text-xs text-gray-700 border border-gray-200 rounded">javascript</span></p></h2><p>To get started, we&#x27;ll scaffold a new Gleam project using <code>gleam new</code>. If you&#x27;ve
+found your way to this guide but don&#x27;t already know what Gleam is you can read
+about it over at <a href="https://gleam.run">gleam.run</a>.</p><pre class="rounded-xl"><code data-hash="-681692208" data-lang="shell" class="not-prose language-shell" style="background:transparent;">$ gleam new lustre_quickstart &amp;&amp; cd lustre_quickstart &amp;&amp; gleam add lustre</code></pre><p>In a real project you probably want to use a build tool like <a href="https://vitejs.dev">vite</a>
+along with the <a href="https://github.com/Enderchief/vite-gleam">vite-gleam</a> plugin, but
+to keep this guide simple we&#x27;ll just show you what code you need to write and leave
+the details on serving the app up to you. MDN have a handy guide covering some
+different options to <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server">set up a local web server for development</a>
+if you need some ideas.</p><h3 class="flex items-center justify-between" id="basic-html-setup"><span class="group">Basic HTML setup<a href="#basic-html-setup" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-2 font-sans"></p></h3><p>With our Gleam project scaffolded, go ahead and create an <code>index.html</code> in the root
+of the project. This is the minimal code you&#x27;ll typically want to get started:</p><pre class="rounded-xl"><code data-hash="1884302431" data-lang="html" class="not-prose language-html" style="background:transparent;">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Lustre Quickstart&lt;/title&gt;
+
+    &lt;script type=&quot;module&quot;&gt;
+      import { main } from &quot;./build/dev/javascript/lustre_quickstart/app.mjs&quot;;
+
+      document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        main();
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div data-lustre-app&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><p>We wait until the DOM has loaded before calling the our app&#x27;s <code>main</code> function.
+This will mount the Lustre app and start rendering. We also add the <code>data-lustre-app</code>
+attribute to the element we want to mount the app to. You could use a class or an
+id instead, or none of that: <a href="/api/lustre.html#start"><code>lustre.start</code></a> takes a CSS
+selector so go wild!</p><h3 class="flex items-center justify-between" id="hello-world"><span class="group">Hello, world!<a href="#hello-world" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-2 font-sans"></p></h3><p>Go ahead and rename the generated <code>lustre_quickstart.gleam</code> file to <code>app.gleam</code>
+and replace the contents with the following:</p><pre class="rounded-xl"><code data-hash="735973463" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">import lustre
+import lustre/element.{text}
+
+pub fn main() {
+  let app = lustre.element(text(&quot;Hello, world!&quot;))
+  let assert Ok(_) = lustre.start(app, &quot;[data-lustre-app]&quot;, Nil)
+
+  Nil
+}</code></pre><p>This will create a static Lustre app and mount it onto the element that matches
+the CSS selector. While we&#x27;re asserting everything is OK here, it is possible
+for <a href="/api/lustre.html#start"><code>lustre.start</code></a> to fail in a couple of ways. Check
+out the docs for the <a href="/api/lustre.html#error-type"><code>lustre.Error</code></a> type if you
+want to know more.</p><p>Run <code>gleam build</code> and serve the HTML with your preferred static file server (this
+step is necessary: JavaScript modules can&#x27;t be imported when just opening a HTML
+file) and admire your handiwork.</p><h3 class="flex items-center justify-between" id="adding-interactivity"><span class="group">Adding interactivity<a href="#adding-interactivity" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-2 font-sans"></p></h3><p>Now that we know how to get things up and running, let&#x27;s try something a little
+more exciting and add some interactivity. Replace the contents of your <code>app.gleam</code>
+file with the code below and rebuild the project.</p><pre class="rounded-xl"><code data-hash="200671504" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">import gleam/int
+import lustre
+import lustre/element.{text}
+import lustre/element/html.{div, button, p}
+import lustre/event.{on_click}
+
+pub fn main() {
+  let app = lustre.simple(init, update, view)
+  let assert Ok(_) = lustre.start(app, &quot;[data-lustre-app]&quot;, Nil)
+
+  Nil
+}
+
+fn init(_) {
+  0
+}
+
+type Msg {
+  Incr
+  Decr
+}
+
+fn update(model, msg) {
+  case msg {
+    Incr -&gt; model + 1
+    Decr -&gt; model - 1
+  }
+}
+
+fn view(model) {
+  let count = int.to_string(model)
+
+  div([], [
+    button([on_click(Decr)], [text(&quot; - &quot;)]),
+    p([], [text(count)]),
+    button([on_click(Incr)], [text(&quot; + &quot;)])
+  ])
+}</code></pre><p>You should now have a very exciting counter app! Almost every Lustre app will
+boil down to the same three parts:</p><ul><li><p>A <code>Model</code> type that represents your application&#x27;s state and a function to
+<code>init</code> it.</p></li><li><p>A <code>Msg</code> type and an <code>update</code> function to update that state based on incoming
+messages.</p></li><li><p>A <code>view</code> function that takes the current state and renders some HTML.</p></li></ul><p>This architecture is not unique to Lustre. It was introduced by the Elm community
+and known as the <a href="https://guide.elm-lang.org/architecture/">Elm Architecture</a>
+before making its way to React as <a href="https://redux.js.org">Redux</a> and beyond, known
+more generally as the Model-View-Update architecture. If you work through the
+rest of our guides you&#x27;ll see how this architecture helps keep side effects out
+of our view code and how to create components that can encapsulate their own state
+and update logic.</p><p>For now though, we&#x27;ll leave things here. If you&#x27;re interested in seeing how Lustre
+can be used to render static HTML on the server, read on! Otherwise, you can take
+this counter application as a base and start building something of your own.</p><h2 class="flex items-center justify-between border-t" id="on-the-server"><span class="group">On the server<a href="#on-the-server" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-4 font-sans"><span class="px-2 py-1 text-xs text-gray-700 border border-gray-200 rounded">erlang</span><span class="px-2 py-1 text-xs text-gray-700 border border-gray-200 rounded">javascript</span></p></h2><p>As we&#x27;ve seen, Lustre is primarily meant to be used in the browser to build
+interactive SPAs. It is possible to render Lustre elements to static HTML and
+simply use Lustre as a templating DSL. As before, we&#x27;ll start by scaffolding a
+new Gleam project and adding Lustre as a dependency:</p><pre class="rounded-xl"><code data-hash="-681692208" data-lang="shell" class="not-prose language-shell" style="background:transparent;">$ gleam new lustre_quickstart &amp;&amp; cd lustre_quickstart &amp;&amp; gleam add lustre</code></pre><p>The <a href="/api/lustre/element.html"><code>lustre/element</code></a> module contains functions to
+render an element as either a <code>String</code> or <code>StringBuilder</code>. Copy the following code
+into <code>lustre_quickstart.gleam</code>:</p><pre class="rounded-xl"><code data-hash="-357697671" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">import gleam/io
+import lustre/attribute.{attribute}
+import lustre/element.{text}
+import lustre/element/html.{html, head, title, body, div, h1}
+
+pub fn main() {
+  html([attribute(&quot;lang&quot;, &quot;en&quot;)], [
+    head([], [
+     title([], [text(&quot;Lustre Quickstart&quot;)])
+    ]),
+    body([], [
+      h1([], [text(&quot;Hello, world!&quot;)])
+    ])
+  ])
+  |&gt; element.to_string
+  |&gt; io.println
+}</code></pre><p>We can test this out by running <code>gleam run</code> and seeing the HTML printed to the
+console. From here we could set up a web server using <a href="/guides/mist.html">Mist</a>
+or <a href="/guides/wisp.html">Wisp</a> to serve the HTML to the browser or write it to a
+file using <a href="https://hexdocs.pm/simplifile/">simplifile</a>. Because the API is the
+same for both client and server rendering, it is easy to create reusable components
+that can be rendered anywhere Gleam can run!</p><h3 class="flex items-center justify-between" id="an-example-with-wisp"><span class="group">An example with Wisp<a href="#an-example-with-wisp" class="pl-2 text-gray-200 opacity-0 transition-opacity" class="group-hover:underline group-hover:opacity-100">#</a></span><p class="flex gap-2 font-sans"></p></h3><p>Before we go, let&#x27;s just take a quick look at what it would look like to use
+Lustre in a <a href="https://hexdocs.pm/wisp">Wisp</a> application. We won&#x27;t scaffold out a
+real app in this example, but we&#x27;ll adapt one of the examples from Wisp&#x27;s own
+documentation.</p><p>Specifically, we&#x27;ll take a look at the <code>show_form</code> function from the
+<a href="https://github.com/lpil/wisp/blob/ea8a40bc20745f172695c8cc2dc0a63769f890a7/examples/2-working-with-form-data/src/app/router.gleam#L20">&quot;working with form data&quot;</a>
+example:</p><pre class="rounded-xl"><code data-hash="979701162" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">...
+
+pub fn show_form() {
+  // In a larger application a template library or HTML form library might
+  // be used here instead of a string literal.
+  let html =
+    string_builder.from_string(
+      &quot;&lt;form method=&#x27;post&#x27;&gt;
+        &lt;label&gt;Title:
+          &lt;input type=&#x27;text&#x27; name=&#x27;title&#x27;&gt;
+        &lt;/label&gt;
+        &lt;label&gt;Name:
+          &lt;input type=&#x27;text&#x27; name=&#x27;name&#x27;&gt;
+        &lt;/label&gt;
+        &lt;input type=&#x27;submit&#x27; value=&#x27;Submit&#x27;&gt;
+      &lt;/form&gt;&quot;,
+    )
+  wisp.ok()
+  |&gt; wisp.html_body(html)
+}</code></pre><p>They&#x27;ve helpfully left a comment telling us that in a larger application we might
+want to use a template library, and Lustre is up to the task! Let&#x27;s refactor this
+using Lustre:</p><pre class="rounded-xl"><code data-hash="-394313637" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">import gleam/string
+import lustre/attribute.{attribute}
+import lustre/element
+import lustre/element/html
+...
+
+pub fn show_form() {
+  html.form([attribute(&quot;method&quot;, &quot;post&quot;)], [
+    labelled_input(&quot;Title&quot;),
+    labelled_input(&quot;Name&quot;),
+    html.input([attribute(&quot;type&quot;, &quot;submit&quot;), attribute(&quot;value&quot;, &quot;Submit&quot;)])
+  ])
+  |&gt; element.to_string_builder
+  |&gt; wisp.html_body
+  |&gt; wisp.ok
+}
+
+fn labelled_input(name) {
+  html.label([], [
+    element.text(name &lt;&gt; &quot;: &quot;),
+    html.input([
+      attribute(&quot;type&quot;, &quot;text&quot;),
+      attribute(&quot;name&quot;, string.lowercase(name))
+    ])
+  ])
+}</code></pre></main><aside style="align-self:start;" class="sticky relative top-0 hidden p-4 py-10 h-screen xl:block xl:col-span-1"><div class="absolute left-0 inset-y-0 w-[50vw] bg-gradient-to-b from-white to-gray-100 -z-10"></div><div class="flex flex-col h-full overflow-y-scroll"><a href="#in-the-browser" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">In the browser</a><a href="#basic-html-setup" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline ml-2">Basic HTML setup</a><a href="#hello-world" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline ml-2">Hello, world!</a><a href="#adding-interactivity" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline ml-2">Adding interactivity</a><a href="#on-the-server" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline mt-4 first:mt-0">On the server</a><a href="#an-example-with-wisp" class="text-sm text-gray-400 no-underline hover:text-gray-700 hover:underline ml-2">An example with Wisp</a></div></aside></div></body></html>
