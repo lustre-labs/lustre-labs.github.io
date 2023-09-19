@@ -1,0 +1,21 @@
+name = "app"
+version = "1.0.0"
+description = "Documentation for Lustre and its companion packages."
+target = "javascript"
+
+licences = ["MIT"]
+repository = { type = "github", user = "lustre-labs", repo = "lustre-labs.github.io" }
+links = [
+  { title = "Website", href = "https://lustre-labs.github.io" },
+  { title = "Sponsor", href = "https://github.com/sponsors/hayleigh-dot-dev" },
+]
+
+[dependencies]
+gleam_stdlib = "~> 0.30"
+lustre = "~> 3.0"
+
+[dev-dependencies]
+gleeunit = "~> 0.10"
+lustre_ssg = "~> 0.1"
+shellout = "~> 1.4"
+simplifile = "~> 0.1"
