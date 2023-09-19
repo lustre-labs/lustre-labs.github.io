@@ -15,7 +15,7 @@ pub fn homepage(content_path: String) -> Element(Nil) {
   let content = section(content, summary)
 
   document(
-    "test",
+    "Lustre",
     [],
     [
       html.div(
@@ -52,13 +52,14 @@ pub fn homepage(content_path: String) -> Element(Nil) {
 
 pub fn page(
   content_path: String,
+  title: String,
   transform_type_headings is_api: Bool,
 ) -> Element(Nil) {
   let assert Ok(md) = simplifile.read(content_path)
   let #(content, summary) = parse_md(md, is_api)
   let #(attrs, content) = body(content, summary)
 
-  document("test", attrs, content)
+  document(title, attrs, content)
 }
 
 // -----------------------------------------------------------------------------
