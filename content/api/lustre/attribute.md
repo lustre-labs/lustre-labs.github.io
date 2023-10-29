@@ -14,11 +14,19 @@ pub opaque type Attribute(msg)
 pub fn attribute(name: String, value: String) -> Attribute(msg)
 ```
 
+Attributes are the string key-value pairs that you see attached directly to HTML
+tags. **These are always emitted when rendering a property to a string.** There
+is a subtle difference between HTML attributes and DOM properties, see below.
+
 ### property | erlang javascript
 
 ```gleam
 pub fn property(name: String, value: any) -> Attribute(msg)
 ```
+
+Properties set the state of an element by manipulating the JavaScript properties
+on the DOM node. **Non-string or non-boolean values will not be emitted when rendering
+a property to a string.**
 
 ### on | erlang javascript
 
@@ -90,6 +98,8 @@ pub fn type_(name: String) -> Attribute(msg)
 ```gleam
 pub fn value(val: Dynamic) -> Attribute(msg)
 ```
+
+Set the value property of an element. This attribute takes a `Dynamic`
 
 ### checked | erlang javascript
 
@@ -245,25 +255,25 @@ pub fn rel(relationship: String) -> Attribute(msg)
 
 ## Embedded content
 
-### gleam | erlang javascript
+### src | erlang javascript
 
 ```gleam
 pub fn src(uri: String) -> Attribute(msg)
 ```
 
-### gleam | erlang javascript
+### height | erlang javascript
 
 ```gleam
 pub fn height(val: Int) -> Attribute(msg)
 ```
 
-### gleam | erlang javascript
+### width | erlang javascript
 
 ```gleam
 pub fn width(val: Int) -> Attribute(msg)
 ```
 
-### gleam | erlang javascript
+### alt | erlang javascript
 
 ```gleam
 pub fn alt(text: String) -> Attribute(msg)
