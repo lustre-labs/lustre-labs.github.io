@@ -50,7 +50,7 @@ pub fn view(model: Model) -&gt; Element(Msg) {
     html.button([event.on_click(Double)], [html.text(&quot;x2&quot;)]),
     html.button([event.on_click(Reset)], [html.text(&quot;Reset&quot;)]),
   ])
-}</code></pre><p>Now we can create and manage multiple counters in our main application:</p><pre class="rounded-xl"><code data-hash="1339666631" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">// app.gleam
+}</code></pre><p>Now we can create and manage multiple counters in our main application:</p><pre class="rounded-xl"><code data-hash="-523610248" data-lang="gleam" class="not-prose language-gleam" style="background:transparent;">// app.gleam
 
 import app/counter
 import lustre
@@ -71,7 +71,7 @@ pub type Model {
   )
 }
 
-pub fn init() -&gt; Model {
+pub fn init(_) -&gt; Model {
   Model(
     counter.init(),
     counter.init(),
