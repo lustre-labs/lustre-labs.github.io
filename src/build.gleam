@@ -17,18 +17,13 @@ pub fn main() {
   |> ssg.use_index_routes
   |> ssg.build
 
-  bool.guard(!list.contains(argv, "--build-assets"), Nil, build_assets)
+  let assert Ok(_) = build_tailwind()
+  let assert Ok(_) = build_javascript()
+
   bool.guard(!list.contains(argv, "--serve"), Nil, serve)
 }
 
 // BUILD -----------------------------------------------------------------------
-
-fn build_assets() {
-  let assert Ok(_) = build_tailwind()
-  let assert Ok(_) = build_javascript()
-
-  Nil
-}
 
 fn build_tailwind() {
   let input = "./src/styles.css"
