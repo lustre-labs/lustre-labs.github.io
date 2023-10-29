@@ -90,7 +90,7 @@ pub type Model {
   )
 }
 
-pub fn init() -> Model {
+pub fn init(_) -> Model {
   Model(
     counter.init(),
     counter.init(),
