@@ -2,8 +2,8 @@
 
 import gleam/list
 import gleam/string
-import lustre/attribute.{Attribute, attribute}
-import lustre/element.{Element}
+import lustre/attribute.{type Attribute, attribute}
+import lustre/element.{type Element}
 import lustre/element/html.{html}
 import simplifile
 

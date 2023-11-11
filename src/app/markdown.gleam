@@ -3,7 +3,7 @@
 import gleam/int
 import gleam/list
 import lustre/attribute.{attribute}
-import lustre/element.{Element, element}
+import lustre/element.{type Element, element}
 import lustre/element/html
 
 // MARKDOWN ELEMENTS -----------------------------------------------------------

@@ -2,8 +2,8 @@
 
 import app/layout
 import gleam/list
-import lustre/element.{Element}
-import lustre/ssg.{Config, HasStaticRoutes}
+import lustre/element.{type Element}
+import lustre/ssg.{type Config, type HasStaticRoutes}
 
 // TYPES -----------------------------------------------------------------------
 
