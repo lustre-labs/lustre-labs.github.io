@@ -1,14 +1,25 @@
+title = "lustre/element"
+route = "/api/lustre/element"
+
+description = ""
+
+---
+
 # lustre/element
 
 ## Constructing elements
 
-### Element | erlang javascript
+{api}
+{target=erlang javascript}
+### Element
 
 ```gleam
 pub opaque type Element(msg)
 ```
 
-### element | erlang javascript
+{api}
+{target=erlang javascript}
+### element
 
 ```gleam
 pub fn element(
@@ -18,7 +29,9 @@ pub fn element(
 ) -> Element(msg)
 ```
 
-### namespaced | erlang javascript
+{api}
+{target=erlang javascript}
+### namespaced
 
 ```gleam
 pub fn namespaced(
@@ -29,7 +42,9 @@ pub fn namespaced(
 ) -> Element(msg)
 ```
 
-### text | erlang javascript
+{api}
+{target=erlang javascript}
+### text
 
 ```gleam
 pub fn text(content: String) -> Element(msg)
@@ -37,7 +52,9 @@ pub fn text(content: String) -> Element(msg)
 
 ## Mapping elements
 
-### map | erlang javascript
+{api}
+{target=erlang javascript}
+### map
 
 ```gleam
 pub fn map(element: Element(a), f: fn(a) -> b) -> Element(b)
@@ -45,13 +62,17 @@ pub fn map(element: Element(a), f: fn(a) -> b) -> Element(b)
 
 ## Conversions
 
-### to_string | erlang javascript
+{api}
+{target=erlang javascript}
+### to_string
 
 ```gleam
 pub fn to_string(element: Element(msg)) -> String
 ```
 
-### to_string_builder | erlang javascript
+{api}
+{target=erlang javascript}
+### to_string_builder
 
 ```gleam
 pub fn to_string_builder(element: Element(msg)) -> StringBuilder

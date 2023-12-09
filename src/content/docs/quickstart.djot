@@ -1,3 +1,10 @@
+title = "Components"
+route = "/docs/quickstart"
+
+description = ""
+
+---
+
 # Quickstart
 
 Lustre is a frontend web framework for Gleam. It is primarily focused on helping
@@ -5,18 +12,25 @@ you build robust single-page applications (SPAs), but it can also be used on the
 server to render static HTML. To get an idea of what it's all about, here's a
 quick overview of Lustre's key features:
 
-- Elm-inspired runtime with state management and controlled side effects out of
+• Elm-inspired runtime with state management and controlled side effects out of
   the box.
-- A simple, declarative API for building type-safe user interfaces.
-- Stateful components built as custom elements and useable just like any other
+
+
+• A simple, declarative API for building type-safe user interfaces.
+
+
+• Stateful components built as custom elements and useable just like any other
   HTML element.
-- Static HTML rendering anywhere Gleam can run: the BEAM, Node.js, Deno, or the
+
+
+• Static HTML rendering anywhere Gleam can run: the BEAM, Node.js, Deno, or the
   browser.
 
 In this quickstart guide we'll take a look at how to get up and running with
 Lustre in both the browser and on the server.
 
-## In the browser | javascript
+{target=javascript}
+## In the browser
 
 To get started, we'll scaffold a new Gleam project using `gleam new`. If you've
 found your way to this guide but don't already know what Gleam is you can read
@@ -162,7 +176,8 @@ For now though, we'll leave things here. If you're interested in seeing how Lust
 can be used to render static HTML on the server, read on! Otherwise, you can take
 this counter application as a base and start building something of your own.
 
-## On the server | erlang javascript
+{target=erlang javascript}
+## On the server
 
 As we've seen, Lustre is primarily meant to be used in the browser to build
 interactive SPAs. It is possible to render Lustre elements to static HTML and

@@ -1,0 +1,55 @@
+html,
+body {
+  font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body > * {
+  max-width: 140ch;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Fraunces, "Times New Roman", Times, serif;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--text-lg);
+}
+
+a[href]:hover {
+  text-decoration: underline;
+}
+
+pre:has(code) {
+  background-color: var(--app-background-subtle);
+  border-radius: var(--border-radius);
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  font-size: var(--text-md);
+
+  /*  Remove any additional styles slapped on by hljs */
+  padding: 0 !important;
+  background: transparent !important;
+}

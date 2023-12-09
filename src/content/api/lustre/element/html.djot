@@ -1,8 +1,17 @@
+title = "lustre/element/html"
+route = "/api/lustre/element/html"
+
+description = ""
+
+---
+
 # lustre/element/html
 
 ## Main Root
 
-### html | erlang javascript
+{api}
+{target=erlang javascript}
+### html
 
 ```gleam
 pub fn html(
@@ -13,37 +22,49 @@ pub fn html(
 
 ## Document Metadata
 
-### base | erlang javascript
+{api}
+{target=erlang javascript}
+### base
 
 ```gleam
 pub fn base(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### head | erlang javascript
+{api}
+{target=erlang javascript}
+### head
 
 ```gleam
 pub fn head(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### link | erlang javascript
+{api}
+{target=erlang javascript}
+### link
 
 ```gleam
 pub fn link(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### meta | erlang javascript
+{api}
+{target=erlang javascript}
+### meta
 
 ```gleam
 pub fn meta(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### style | erlang javascript
+{api}
+{target=erlang javascript}
+### style
 
 ```gleam
 pub fn style(attrs: List(Attribute(msg)), css: String) -> Element(msg)
 ```
 
-### title | erlang javascript
+{api}
+{target=erlang javascript}
+### title
 
 ```gleam
 pub fn title(attrs: List(Attribute(msg)), content: String) -> Element(msg)
@@ -51,7 +72,9 @@ pub fn title(attrs: List(Attribute(msg)), content: String) -> Element(msg)
 
 ## Sectioning root
 
-### body | erlang javascript
+{api}
+{target=erlang javascript}
+### body
 
 ```gleam
 pub fn body(
@@ -62,7 +85,9 @@ pub fn body(
 
 ## Content sectioning
 
-### address | erlang javascript
+{api}
+{target=erlang javascript}
+### address
 
 ```gleam
 pub fn address(
@@ -71,7 +96,9 @@ pub fn address(
 ) -> Element(msg)
 ```
 
-### article | erlang javascript
+{api}
+{target=erlang javascript}
+### article
 
 ```gleam
 pub fn article(
@@ -80,7 +107,9 @@ pub fn article(
 ) -> Element(msg)
 ```
 
-### aside | erlang javascript
+{api}
+{target=erlang javascript}
+### aside
 
 ```gleam
 pub fn aside(
@@ -89,7 +118,9 @@ pub fn aside(
 ) -> Element(msg)
 ```
 
-### footer | erlang javascript
+{api}
+{target=erlang javascript}
+### footer
 
 ```gleam
 pub fn footer(
@@ -98,7 +129,9 @@ pub fn footer(
 ) -> Element(msg)
 ```
 
-### header | erlang javascript
+{api}
+{target=erlang javascript}
+### header
 
 ```gleam
 pub fn header(
@@ -107,7 +140,9 @@ pub fn header(
 ) -> Element(msg)
 ```
 
-### h1 | erlang javascript
+{api}
+{target=erlang javascript}
+### h1
 
 ```gleam
 pub fn h1(
@@ -116,7 +151,9 @@ pub fn h1(
 ) -> Element(msg)
 ```
 
-### h2 | erlang javascript
+{api}
+{target=erlang javascript}
+### h2
 
 ```gleam
 pub fn h2(
@@ -125,7 +162,9 @@ pub fn h2(
 ) -> Element(msg)
 ```
 
-### h3 | erlang javascript
+{api}
+{target=erlang javascript}
+### h3
 
 ```gleam
 pub fn h3(
@@ -134,7 +173,9 @@ pub fn h3(
 ) -> Element(msg)
 ```
 
-### h4 | erlang javascript
+{api}
+{target=erlang javascript}
+### h4
 
 ```gleam
 pub fn h4(
@@ -143,7 +184,9 @@ pub fn h4(
 ) -> Element(msg)
 ```
 
-### h5 | erlang javascript
+{api}
+{target=erlang javascript}
+### h5
 
 ```gleam
 pub fn h5(
@@ -152,7 +195,9 @@ pub fn h5(
 ) -> Element(msg)
 ```
 
-### h6 | erlang javascript
+{api}
+{target=erlang javascript}
+### h6
 
 ```gleam
 pub fn h6(
@@ -161,7 +206,9 @@ pub fn h6(
 ) -> Element(msg)
 ```
 
-### hgroup | erlang javascript
+{api}
+{target=erlang javascript}
+### hgroup
 
 ```gleam
 pub fn hgroup(
@@ -170,7 +217,9 @@ pub fn hgroup(
 ) -> Element(msg)
 ```
 
-### main | erlang javascript
+{api}
+{target=erlang javascript}
+### main
 
 ```gleam
 pub fn main(
@@ -179,7 +228,9 @@ pub fn main(
 ) -> Element(msg)
 ```
 
-### nav | erlang javascript
+{api}
+{target=erlang javascript}
+### nav
 
 ```gleam
 pub fn nav(
@@ -188,7 +239,9 @@ pub fn nav(
 ) -> Element(msg)
 ```
 
-### section | erlang javascript
+{api}
+{target=erlang javascript}
+### section
 
 ```gleam
 pub fn section(
@@ -197,7 +250,9 @@ pub fn section(
 ) -> Element(msg)
 ```
 
-### search | erlang javascript
+{api}
+{target=erlang javascript}
+### search
 
 ```gleam
 pub fn search(
@@ -208,7 +263,9 @@ pub fn search(
 
 ## Text content
 
-### blockquote | erlang javascript
+{api}
+{target=erlang javascript}
+### blockquote
 
 ```gleam
 pub fn blockquote(
@@ -217,7 +274,9 @@ pub fn blockquote(
 ) -> Element(msg)
 ```
 
-### dd | erlang javascript
+{api}
+{target=erlang javascript}
+### dd
 
 ```gleam
 pub fn dd(
@@ -226,7 +285,9 @@ pub fn dd(
 ) -> Element(msg)
 ```
 
-### div | erlang javascript
+{api}
+{target=erlang javascript}
+### div
 
 ```gleam
 pub fn div(
@@ -235,7 +296,9 @@ pub fn div(
 ) -> Element(msg)
 ```
 
-### dl | erlang javascript
+{api}
+{target=erlang javascript}
+### dl
 
 ```gleam
 pub fn dl(
@@ -244,7 +307,9 @@ pub fn dl(
 ) -> Element(msg)
 ```
 
-### dt | erlang javascript
+{api}
+{target=erlang javascript}
+### dt
 
 ```gleam
 pub fn dt(
@@ -253,7 +318,9 @@ pub fn dt(
 ) -> Element(msg)
 ```
 
-### figcaption | erlang javascript
+{api}
+{target=erlang javascript}
+### figcaption
 
 ```gleam
 pub fn figcaption(
@@ -262,7 +329,9 @@ pub fn figcaption(
 ) -> Element(msg)
 ```
 
-### figure | erlang javascript
+{api}
+{target=erlang javascript}
+### figure
 
 ```gleam
 pub fn figure(
@@ -271,13 +340,17 @@ pub fn figure(
 ) -> Element(msg)
 ```
 
-### hr | erlang javascript
+{api}
+{target=erlang javascript}
+### hr
 
 ```gleam
 pub fn hr(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### li | erlang javascript
+{api}
+{target=erlang javascript}
+### li
 
 ```gleam
 pub fn li(
@@ -286,7 +359,9 @@ pub fn li(
 ) -> Element(msg)
 ```
 
-### menu | erlang javascript
+{api}
+{target=erlang javascript}
+### menu
 
 ```gleam
 pub fn menu(
@@ -295,7 +370,9 @@ pub fn menu(
 ) -> Element(msg)
 ```
 
-### ol | erlang javascript
+{api}
+{target=erlang javascript}
+### ol
 
 ```gleam
 pub fn ol(
@@ -304,7 +381,9 @@ pub fn ol(
 ) -> Element(msg)
 ```
 
-### p | erlang javascript
+{api}
+{target=erlang javascript}
+### p
 
 ```gleam
 pub fn p(
@@ -313,7 +392,9 @@ pub fn p(
 ) -> Element(msg)
 ```
 
-### pre | erlang javascript
+{api}
+{target=erlang javascript}
+### pre
 
 ```gleam
 pub fn pre(
@@ -322,7 +403,9 @@ pub fn pre(
 ) -> Element(msg)
 ```
 
-### ul | erlang javascript
+{api}
+{target=erlang javascript}
+### ul
 
 ```gleam
 pub fn ul(
@@ -333,7 +416,9 @@ pub fn ul(
 
 ## Inline text semantics
 
-### a | erlang javascript
+{api}
+{target=erlang javascript}
+### a
 
 ```gleam
 pub fn a(
@@ -342,7 +427,9 @@ pub fn a(
 ) -> Element(msg)
 ```
 
-### abbr | erlang javascript
+{api}
+{target=erlang javascript}
+### abbr
 
 ```gleam
 pub fn abbr(
@@ -351,7 +438,9 @@ pub fn abbr(
 ) -> Element(msg)
 ```
 
-### b | erlang javascript
+{api}
+{target=erlang javascript}
+### b
 
 ```gleam
 pub fn b(
@@ -360,7 +449,9 @@ pub fn b(
 ) -> Element(msg)
 ```
 
-### bdi | erlang javascript
+{api}
+{target=erlang javascript}
+### bdi
 
 ```gleam
 pub fn bdi(
@@ -369,7 +460,9 @@ pub fn bdi(
 ) -> Element(msg)
 ```
 
-### bdo | erlang javascript
+{api}
+{target=erlang javascript}
+### bdo
 
 ```gleam
 pub fn bdo(
@@ -378,13 +471,17 @@ pub fn bdo(
 ) -> Element(msg)
 ```
 
-### br | erlang javascript
+{api}
+{target=erlang javascript}
+### br
 
 ```gleam
 pub fn br(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### cite | erlang javascript
+{api}
+{target=erlang javascript}
+### cite
 
 ```gleam
 pub fn cite(
@@ -393,7 +490,9 @@ pub fn cite(
 ) -> Element(msg)
 ```
 
-### code | erlang javascript
+{api}
+{target=erlang javascript}
+### code
 
 ```gleam
 pub fn code(
@@ -402,7 +501,9 @@ pub fn code(
 ) -> Element(msg)
 ```
 
-### data | erlang javascript
+{api}
+{target=erlang javascript}
+### data
 
 ```gleam
 pub fn data(
@@ -411,7 +512,9 @@ pub fn data(
 ) -> Element(msg)
 ```
 
-### dfn | erlang javascript
+{api}
+{target=erlang javascript}
+### dfn
 
 ```gleam
 pub fn dfn(
@@ -420,7 +523,9 @@ pub fn dfn(
 ) -> Element(msg)
 ```
 
-### em | erlang javascript
+{api}
+{target=erlang javascript}
+### em
 
 ```gleam
 pub fn em(
@@ -429,7 +534,9 @@ pub fn em(
 ) -> Element(msg)
 ```
 
-### i | erlang javascript
+{api}
+{target=erlang javascript}
+### i
 
 ```gleam
 pub fn i(
@@ -438,7 +545,9 @@ pub fn i(
 ) -> Element(msg)
 ```
 
-### kbd | erlang javascript
+{api}
+{target=erlang javascript}
+### kbd
 
 ```gleam
 pub fn kbd(
@@ -447,7 +556,9 @@ pub fn kbd(
 ) -> Element(msg)
 ```
 
-### mark | erlang javascript
+{api}
+{target=erlang javascript}
+### mark
 
 ```gleam
 pub fn mark(
@@ -456,7 +567,9 @@ pub fn mark(
 ) -> Element(msg)
 ```
 
-### q | erlang javascript
+{api}
+{target=erlang javascript}
+### q
 
 ```gleam
 pub fn q(
@@ -465,7 +578,9 @@ pub fn q(
 ) -> Element(msg)
 ```
 
-### rp | erlang javascript
+{api}
+{target=erlang javascript}
+### rp
 
 ```gleam
 pub fn rp(
@@ -474,7 +589,9 @@ pub fn rp(
 ) -> Element(msg)
 ```
 
-### rt | erlang javascript
+{api}
+{target=erlang javascript}
+### rt
 
 ```gleam
 pub fn rt(
@@ -483,7 +600,9 @@ pub fn rt(
 ) -> Element(msg)
 ```
 
-### ruby | erlang javascript
+{api}
+{target=erlang javascript}
+### ruby
 
 ```gleam
 pub fn ruby(
@@ -492,7 +611,9 @@ pub fn ruby(
 ) -> Element(msg)
 ```
 
-### s | erlang javascript
+{api}
+{target=erlang javascript}
+### s
 
 ```gleam
 pub fn s(
@@ -501,7 +622,9 @@ pub fn s(
 ) -> Element(msg)
 ```
 
-### samp | erlang javascript
+{api}
+{target=erlang javascript}
+### samp
 
 ```gleam
 pub fn samp(
@@ -510,7 +633,9 @@ pub fn samp(
 ) -> Element(msg)
 ```
 
-### small | erlang javascript
+{api}
+{target=erlang javascript}
+### small
 
 ```gleam
 pub fn small(
@@ -519,7 +644,9 @@ pub fn small(
 ) -> Element(msg)
 ```
 
-### span | erlang javascript
+{api}
+{target=erlang javascript}
+### span
 
 ```gleam
 pub fn span(
@@ -528,7 +655,9 @@ pub fn span(
 ) -> Element(msg)
 ```
 
-### strong | erlang javascript
+{api}
+{target=erlang javascript}
+### strong
 
 ```gleam
 pub fn strong(
@@ -537,7 +666,9 @@ pub fn strong(
 ) -> Element(msg)
 ```
 
-### sub | erlang javascript
+{api}
+{target=erlang javascript}
+### sub
 
 ```gleam
 pub fn sub(
@@ -546,7 +677,9 @@ pub fn sub(
 ) -> Element(msg)
 ```
 
-### sup | erlang javascript
+{api}
+{target=erlang javascript}
+### sup
 
 ```gleam
 pub fn sup(
@@ -555,7 +688,9 @@ pub fn sup(
 ) -> Element(msg)
 ```
 
-### time | erlang javascript
+{api}
+{target=erlang javascript}
+### time
 
 ```gleam
 pub fn time(
@@ -564,7 +699,9 @@ pub fn time(
 ) -> Element(msg)
 ```
 
-### u | erlang javascript
+{api}
+{target=erlang javascript}
+### u
 
 ```gleam
 pub fn u(
@@ -573,7 +710,9 @@ pub fn u(
 ) -> Element(msg)
 ```
 
-### var | erlang javascript
+{api}
+{target=erlang javascript}
+### var
 
 ```gleam
 pub fn var(
@@ -582,7 +721,9 @@ pub fn var(
 ) -> Element(msg)
 ```
 
-### wbr | erlang javascript
+{api}
+{target=erlang javascript}
+### wbr
 
 ```gleam
 pub fn wbr(attrs: List(Attribute(msg))) -> Element(msg)
@@ -590,13 +731,17 @@ pub fn wbr(attrs: List(Attribute(msg))) -> Element(msg)
 
 ## Image and multimedia
 
-### area | erlang javascript
+{api}
+{target=erlang javascript}
+### area
 
 ```gleam
 pub fn area(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### audio | erlang javascript
+{api}
+{target=erlang javascript}
+### audio
 
 ```gleam
 pub fn audio(
@@ -605,13 +750,17 @@ pub fn audio(
 ) -> Element(msg)
 ```
 
-### img | erlang javascript
+{api}
+{target=erlang javascript}
+### img
 
 ```gleam
 pub fn img(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### map | erlang javascript
+{api}
+{target=erlang javascript}
+### map
 
 ```gleam
 pub fn map(
@@ -620,13 +769,17 @@ pub fn map(
 ) -> Element(msg)
 ```
 
-### track | erlang javascript
+{api}
+{target=erlang javascript}
+### track
 
 ```gleam
 pub fn track(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### video | erlang javascript
+{api}
+{target=erlang javascript}
+### video
 
 ```gleam
 pub fn video(
@@ -637,25 +790,33 @@ pub fn video(
 
 ## Embedded content
 
-### embed | erlang javascript
+{api}
+{target=erlang javascript}
+### embed
 
 ```gleam
 pub fn embed(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### iframe | erlang javascript
+{api}
+{target=erlang javascript}
+### iframe
 
 ```gleam
 pub fn iframe(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### object | erlang javascript
+{api}
+{target=erlang javascript}
+### object
 
 ```gleam
 pub fn object(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### picture | erlang javascript
+{api}
+{target=erlang javascript}
+### picture
 
 ```gleam
 pub fn picture(
@@ -664,13 +825,17 @@ pub fn picture(
 ) -> Element(msg)
 ```
 
-### portal | erlang javascript
+{api}
+{target=erlang javascript}
+### portal
 
 ```gleam
 pub fn portal(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### source | erlang javascript
+{api}
+{target=erlang javascript}
+### source
 
 ```gleam
 pub fn source(attrs: List(Attribute(msg))) -> Element(msg)
@@ -678,7 +843,9 @@ pub fn source(attrs: List(Attribute(msg))) -> Element(msg)
 
 ## SVG and MathML
 
-### svg | erlang javascript
+{api}
+{target=erlang javascript}
+### svg
 
 ````gleam
 pub fn svg(
@@ -686,7 +853,9 @@ pub fn svg(
   children: List(Element(msg)),
 ) -> Element(msg)
 
-### math | erlang javascript
+{api}
+{target=erlang javascript}
+### math
 
 ```gleam
 pub fn math(
@@ -697,13 +866,17 @@ pub fn math(
 
 ## Scripting
 
-### canvas | erlang javascript
+{api}
+{target=erlang javascript}
+### canvas
 
 ```gleam
 pub fn canvas(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### noscript | erlang javascript
+{api}
+{target=erlang javascript}
+### noscript
 
 ```gleam
 pub fn noscript(
@@ -712,7 +885,9 @@ pub fn noscript(
 ) -> Element(msg)
 ```
 
-### script | erlang javascript
+{api}
+{target=erlang javascript}
+### script
 
 ```gleam
 pub fn script(attrs: List(Attribute(msg)), js: String) -> Element(msg)
@@ -720,7 +895,9 @@ pub fn script(attrs: List(Attribute(msg)), js: String) -> Element(msg)
 
 ## Demarcating edits
 
-### del | erlang javascript
+{api}
+{target=erlang javascript}
+### del
 
 ```gleam
 pub fn del(
@@ -729,7 +906,9 @@ pub fn del(
 ) -> Element(msg)
 ```
 
-### ins | erlang javascript
+{api}
+{target=erlang javascript}
+### ins
 
 ```gleam
 pub fn ins(
@@ -740,7 +919,9 @@ pub fn ins(
 
 ## Table content
 
-### caption | erlang javascript
+{api}
+{target=erlang javascript}
+### caption
 
 ```gleam
 pub fn caption(
@@ -749,13 +930,17 @@ pub fn caption(
 ) -> Element(msg)
 ```
 
-### col | erlang javascript
+{api}
+{target=erlang javascript}
+### col
 
 ```gleam
 pub fn col(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### colgroup | erlang javascript
+{api}
+{target=erlang javascript}
+### colgroup
 
 ```gleam
 pub fn colgroup(
@@ -764,7 +949,9 @@ pub fn colgroup(
 ) -> Element(msg)
 ```
 
-### table | erlang javascript
+{api}
+{target=erlang javascript}
+### table
 
 ```gleam
 pub fn table(
@@ -773,7 +960,9 @@ pub fn table(
 ) -> Element(msg)
 ```
 
-### tbody | erlang javascript
+{api}
+{target=erlang javascript}
+### tbody
 
 ```gleam
 pub fn tbody(
@@ -782,7 +971,9 @@ pub fn tbody(
 ) -> Element(msg)
 ```
 
-### td | erlang javascript
+{api}
+{target=erlang javascript}
+### td
 
 ```gleam
 pub fn td(
@@ -791,7 +982,9 @@ pub fn td(
 ) -> Element(msg)
 ```
 
-### tfoot | erlang javascript
+{api}
+{target=erlang javascript}
+### tfoot
 
 ```gleam
 pub fn tfoot(
@@ -800,7 +993,9 @@ pub fn tfoot(
 ) -> Element(msg)
 ```
 
-### th | erlang javascript
+{api}
+{target=erlang javascript}
+### th
 
 ```gleam
 pub fn th(
@@ -809,7 +1004,9 @@ pub fn th(
 ) -> Element(msg)
 ```
 
-### thead | erlang javascript
+{api}
+{target=erlang javascript}
+### thead
 
 ```gleam
 pub fn thead(
@@ -818,7 +1015,9 @@ pub fn thead(
 ) -> Element(msg)
 ```
 
-### tr | erlang javascript
+{api}
+{target=erlang javascript}
+### tr
 
 ```gleam
 pub fn tr(
@@ -829,7 +1028,9 @@ pub fn tr(
 
 ## Forms
 
-### button | erlang javascript
+{api}
+{target=erlang javascript}
+### button
 
 ```gleam
 pub fn button(
@@ -838,7 +1039,9 @@ pub fn button(
 ) -> Element(msg)
 ```
 
-### datalist | erlang javascript
+{api}
+{target=erlang javascript}
+### datalist
 
 ```gleam
 pub fn datalist(
@@ -847,7 +1050,9 @@ pub fn datalist(
 ) -> Element(msg)
 ```
 
-### fieldset | erlang javascript
+{api}
+{target=erlang javascript}
+### fieldset
 
 ```gleam
 pub fn fieldset(
@@ -856,7 +1061,9 @@ pub fn fieldset(
 ) -> Element(msg)
 ```
 
-### form | erlang javascript
+{api}
+{target=erlang javascript}
+### form
 
 ```gleam
 pub fn form(
@@ -865,13 +1072,17 @@ pub fn form(
 ) -> Element(msg)
 ```
 
-### input | erlang javascript
+{api}
+{target=erlang javascript}
+### input
 
 ```gleam
 pub fn input(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### label | erlang javascript
+{api}
+{target=erlang javascript}
+### label
 
 ```gleam
 pub fn label(
@@ -880,7 +1091,9 @@ pub fn label(
 ) -> Element(msg)
 ```
 
-### legend | erlang javascript
+{api}
+{target=erlang javascript}
+### legend
 
 ```gleam
 pub fn legend(
@@ -889,7 +1102,9 @@ pub fn legend(
 ) -> Element(msg)
 ```
 
-### meter | erlang javascript
+{api}
+{target=erlang javascript}
+### meter
 
 ```gleam
 pub fn meter(
@@ -898,7 +1113,9 @@ pub fn meter(
 ) -> Element(msg)
 ```
 
-### optgroup | erlang javascript
+{api}
+{target=erlang javascript}
+### optgroup
 
 ```gleam
 pub fn optgroup(
@@ -907,13 +1124,17 @@ pub fn optgroup(
 ) -> Element(msg)
 ```
 
-### option | erlang javascript
+{api}
+{target=erlang javascript}
+### option
 
 ```gleam
 pub fn option(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### output | erlang javascript
+{api}
+{target=erlang javascript}
+### output
 
 ```gleam
 pub fn output(
@@ -922,7 +1143,9 @@ pub fn output(
 ) -> Element(msg)
 ```
 
-### progress | erlang javascript
+{api}
+{target=erlang javascript}
+### progress
 
 ```gleam
 pub fn progress(
@@ -931,7 +1154,9 @@ pub fn progress(
 ) -> Element(msg)
 ```
 
-### select | erlang javascript
+{api}
+{target=erlang javascript}
+### select
 
 ```gleam
 pub fn select(
@@ -940,7 +1165,9 @@ pub fn select(
 ) -> Element(msg)
 ```
 
-### textarea | erlang javascript
+{api}
+{target=erlang javascript}
+### textarea
 
 ```gleam
 pub fn textarea(attrs: List(Attribute(msg))) -> Element(msg)
@@ -948,7 +1175,9 @@ pub fn textarea(attrs: List(Attribute(msg))) -> Element(msg)
 
 ## Interactive elements
 
-### details | erlang javascript
+{api}
+{target=erlang javascript}
+### details
 
 ```gleam
 pub fn details(
@@ -957,7 +1186,9 @@ pub fn details(
 ) -> Element(msg)
 ```
 
-### dialog | erlang javascript
+{api}
+{target=erlang javascript}
+### dialog
 
 ```gleam
 pub fn dialog(
@@ -966,7 +1197,9 @@ pub fn dialog(
 ) -> Element(msg)
 ```
 
-### summary | erlang javascript
+{api}
+{target=erlang javascript}
+### summary
 
 ```gleam
 pub fn summary(
@@ -977,13 +1210,17 @@ pub fn summary(
 
 ## Web components
 
-### slot | erlang javascript
+{api}
+{target=erlang javascript}
+### slot
 
 ```gleam
 pub fn slot(attrs: List(Attribute(msg))) -> Element(msg)
 ```
 
-### template | erlang javascript
+{api}
+{target=erlang javascript}
+### template
 
 ```gleam
 pub fn template(

@@ -1,4 +1,11 @@
-# Side effects
+title = "Components"
+route = "/docs/server-side-rendering"
+
+description = ""
+
+---
+
+# Server-side rendering
 
 Whoopsie, I haven't got round to writing this guide yet. If you haven't checked
 out the [quickstart guide](/docs/quickstart) that is probably the best place to

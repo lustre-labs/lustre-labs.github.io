@@ -1,14 +1,25 @@
+title = "lustre/attribute"
+route = "/api/lustre/attribute"
+
+description = ""
+
+---
+
 # lustre/attribute
 
 ## Constructing attributes
 
-### Attribute | erlang javascript
+{api}
+{target=erlang javascript}
+### Attribute
 
 ```gleam
 pub opaque type Attribute(msg)
 ```
 
-### attribute | erlang javascript
+{api}
+{target=erlang javascript}
+### attribute
 
 ```gleam
 pub fn attribute(name: String, value: String) -> Attribute(msg)
@@ -18,7 +29,9 @@ Attributes are the string key-value pairs that you see attached directly to HTML
 tags. **These are always emitted when rendering a property to a string.** There
 is a subtle difference between HTML attributes and DOM properties, see below.
 
-### property | erlang javascript
+{api}
+{target=erlang javascript}
+### property
 
 ```gleam
 pub fn property(name: String, value: any) -> Attribute(msg)
@@ -28,7 +41,9 @@ Properties set the state of an element by manipulating the JavaScript properties
 on the DOM node. **Non-string or non-boolean values will not be emitted when rendering
 a property to a string.**
 
-### on | erlang javascript
+{api}
+{target=erlang javascript}
+### on
 
 ```gleam
 pub fn on(
@@ -39,7 +54,9 @@ pub fn on(
 
 ## Mapping attributes
 
-### map | erlang javascript
+{api}
+{target=erlang javascript}
+### map
 
 ```gleam
 pub fn map(attr: Attribute(a), f: fn(a) -> b) -> Attribute(b)
@@ -47,13 +64,17 @@ pub fn map(attr: Attribute(a), f: fn(a) -> b) -> Attribute(b)
 
 ## Conversions
 
-### to_string | erlang javascript
+{api}
+{target=erlang javascript}
+### to_string
 
 ```gleam
 pub fn to_string(attr: Attribute(msg)) -> String
 ```
 
-### to_string_builder | erlang javascript
+{api}
+{target=erlang javascript}
+### to_string_builder
 
 ```gleam
 pub fn to_string_builder(attr: Attribute(msg)) -> StringBuilder
@@ -61,25 +82,33 @@ pub fn to_string_builder(attr: Attribute(msg)) -> StringBuilder
 
 ## Common attributes
 
-### style | erlang javascript
+{api}
+{target=erlang javascript}
+### style
 
 ```gleam
 pub fn style(properties: List(#(String, String))) -> Attribute(msg)
 ```
 
-### class | erlang javascript
+{api}
+{target=erlang javascript}
+### class
 
 ```gleam
 pub fn class(name: String) -> Attribute(msg)
 ```
 
-### classes | erlang javascript
+{api}
+{target=erlang javascript}
+### classes
 
 ```gleam
 pub fn classes(names: List(#(String, Bool))) -> Attribute(msg)
 ```
 
-### id | erlang javascript
+{api}
+{target=erlang javascript}
+### id
 
 ```gleam
 pub fn id(name: String) -> Attribute(msg)
@@ -87,13 +116,17 @@ pub fn id(name: String) -> Attribute(msg)
 
 ## Input attributes
 
-### type\_ | erlang javascript
+{api}
+{target=erlang javascript}
+### type\_
 
 ```gleam
 pub fn type_(name: String) -> Attribute(msg)
 ```
 
-### value | erlang javascript
+{api}
+{target=erlang javascript}
+### value
 
 ```gleam
 pub fn value(val: Dynamic) -> Attribute(msg)
@@ -101,19 +134,25 @@ pub fn value(val: Dynamic) -> Attribute(msg)
 
 Set the value property of an element. This attribute takes a `Dynamic`
 
-### checked | erlang javascript
+{api}
+{target=erlang javascript}
+### checked
 
 ```gleam
 pub fn checked(is_checked: Bool) -> Attribute(msg)
 ```
 
-### placeholder | erlang javascript
+{api}
+{target=erlang javascript}
+### placeholder
 
 ```gleam
 pub fn placeholder(text: String) -> Attribute(msg)
 ```
 
-### selected | erlang javascript
+{api}
+{target=erlang javascript}
+### selected
 
 ```gleam
 pub fn selected(is_selected: Bool) -> Attribute(msg
@@ -121,67 +160,89 @@ pub fn selected(is_selected: Bool) -> Attribute(msg
 
 ## More input attributes
 
-### accept | erlang javascript
+{api}
+{target=erlang javascript}
+### accept
 
 ```gleam
 pub fn accept(types: List(String)) -> Attribute(msg)
 ```
 
-### accept_charset | erlang javascript
+{api}
+{target=erlang javascript}
+### accept_charset
 
 ```gleam
 pub fn accept_charset(types: List(String)) -> Attribute(msg)
 ```
 
-### msg | erlang javascript
+{api}
+{target=erlang javascript}
+### msg
 
 ```gleam
 pub fn msg(uri: String) -> Attribute(msg)
 ```
 
-### autocomplete | erlang javascript
+{api}
+{target=erlang javascript}
+### autocomplete
 
 ```gleam
 pub fn autocomplete(name: String) -> Attribute(msg)
 ```
 
-### autofocus | erlang javascript
+{api}
+{target=erlang javascript}
+### autofocus
 
 ```gleam
 pub fn autofocus(should_autofocus: Bool) -> Attribute(msg)
 ```
 
-### disabled | erlang javascript
+{api}
+{target=erlang javascript}
+### disabled
 
 ```gleam
 pub fn disabled(is_disabled: Bool) -> Attribute(msg)
 ```
 
-### name | erlang javascript
+{api}
+{target=erlang javascript}
+### name
 
 ```gleam
 pub fn name(name: String) -> Attribute(msg)
 ```
 
-### pattern | erlang javascript
+{api}
+{target=erlang javascript}
+### pattern
 
 ```gleam
 pub fn pattern(regex: String) -> Attribute(msg)
 ```
 
-### readonly | erlang javascript
+{api}
+{target=erlang javascript}
+### readonly
 
 ```gleam
 pub fn readonly(is_readonly: Bool) -> Attribute(msg)
 ```
 
-### required | erlang javascript
+{api}
+{target=erlang javascript}
+### required
 
 ```gleam
 pub fn required(is_required: Bool) -> Attribute(msg)
 ```
 
-### for | erlang javascript
+{api}
+{target=erlang javascript}
+### for
 
 ```gleam
 pub fn for(id: String) -> Attribute(msg)
@@ -189,19 +250,25 @@ pub fn for(id: String) -> Attribute(msg)
 
 ## Range attributes
 
-### max | erlang javascript
+{api}
+{target=erlang javascript}
+### max
 
 ```gleam
 pub fn max(val: String) -> Attribute(msg)
 ```
 
-### min | erlang javascript
+{api}
+{target=erlang javascript}
+### min
 
 ```gleam
 pub fn min(val: String) -> Attribute(msg)
 ```
 
-### step | erlang javascript
+{api}
+{target=erlang javascript}
+### step
 
 ```gleam
 pub fn step(val: String) -> Attribute(msg)
@@ -209,19 +276,25 @@ pub fn step(val: String) -> Attribute(msg)
 
 ## Textarea attributes
 
-### cols | erlang javascript
+{api}
+{target=erlang javascript}
+### cols
 
 ```gleam
 pub fn cols(val: Int) -> Attribute(msg)
 ```
 
-### rows | erlang javascript
+{api}
+{target=erlang javascript}
+### rows
 
 ```gleam
 pub fn rows(val: Int) -> Attribute(msg)
 ```
 
-### wrap | erlang javascript
+{api}
+{target=erlang javascript}
+### wrap
 
 ```gleam
 pub fn wrap(mode: String) -> Attribute(msg)
@@ -229,25 +302,33 @@ pub fn wrap(mode: String) -> Attribute(msg)
 
 ## Link attributes
 
-### href | erlang javascript
+{api}
+{target=erlang javascript}
+### href
 
 ```gleam
 pub fn href(uri: String) -> Attribute(msg)
 ```
 
-### target | erlang javascript
+{api}
+{target=erlang javascript}
+### target
 
 ```gleam
 pub fn target(target: String) -> Attribute(msg)
 ```
 
-### download | erlang javascript
+{api}
+{target=erlang javascript}
+### download
 
 ```gleam
 pub fn download(filename: String) -> Attribute(msg)
 ```
 
-### rel | erlang javascript
+{api}
+{target=erlang javascript}
+### rel
 
 ```gleam
 pub fn rel(relationship: String) -> Attribute(msg)
@@ -255,25 +336,33 @@ pub fn rel(relationship: String) -> Attribute(msg)
 
 ## Embedded content
 
-### src | erlang javascript
+{api}
+{target=erlang javascript}
+### src
 
 ```gleam
 pub fn src(uri: String) -> Attribute(msg)
 ```
 
-### height | erlang javascript
+{api}
+{target=erlang javascript}
+### height
 
 ```gleam
 pub fn height(val: Int) -> Attribute(msg)
 ```
 
-### width | erlang javascript
+{api}
+{target=erlang javascript}
+### width
 
 ```gleam
 pub fn width(val: Int) -> Attribute(msg)
 ```
 
-### alt | erlang javascript
+{api}
+{target=erlang javascript}
+### alt
 
 ```gleam
 pub fn alt(text: String) -> Attribute(msg)
@@ -281,19 +370,25 @@ pub fn alt(text: String) -> Attribute(msg)
 
 ## Audio and video attributes
 
-### autoplay | erlang javascript
+{api}
+{target=erlang javascript}
+### autoplay
 
 ```gleam
 pub fn autoplay(should_autoplay: Bool) -> Attribute(msg)
 ```
 
-### controls | erlang javascript
+{api}
+{target=erlang javascript}
+### controls
 
 ```gleam
 pub fn controls(visible: Bool) -> Attribute(msg)
 ```
 
-### loop | erlang javascript
+{api}
+{target=erlang javascript}
+### loop
 
 ```gleam
 pub fn loop(should_loop: Bool) -> Attribute(msg)

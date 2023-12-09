@@ -2,18 +2,23 @@
 # You typically do not need to edit this file
 
 packages = [
-  { name = "gleam_stdlib", version = "0.32.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "07D64C26D014CF570F8ACADCE602761EA2E74C842D26F2FD49B0D61973D9966F" },
+  { name = "gleam_community_colour", version = "1.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_community_colour", source = "hex", outer_checksum = "036C206886AFB9F153C552700A7A0B4D2864E3BC96A20C77E5F34A013C051BE3" },
+  { name = "gleam_stdlib", version = "0.33.1", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "3CEAD7B153D896499C78390B22CC968620C27500C922AED3A5DD7B536F922B25" },
   { name = "gleeunit", version = "0.11.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "1397E5C4AC4108769EE979939AC39BF7870659C5AFB714630DEEEE16B8272AD5" },
-  { name = "lustre", version = "3.0.11", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "lustre", source = "hex", outer_checksum = "4B46341D9A3426023CFA21A6CFF4ED0171652A01B8905D1878099308DA2E92D2" },
-  { name = "lustre_ssg", version = "0.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "simplifile", "lustre"], otp_app = "lustre_ssg", source = "hex", outer_checksum = "0BA84D4069DB9CF799943E4FEC61207D59B34FD1186709ACB532FEB091D203B9" },
-  { name = "shellout", version = "1.4.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "shellout", source = "hex", outer_checksum = "995564B69D40146B7A424CA21D32A68D668A882F88BDAD0EFA2C18C7EC412564" },
-  { name = "simplifile", version = "0.2.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "simplifile", source = "hex", outer_checksum = "A08BB90049138E23A64D114ECDB0E16F3B674365F6FE4903CD9826DDB66C6F1B" },
+  { name = "jot", version = "0.2.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "jot", source = "hex", outer_checksum = "D92294CFC110CBEC6CE3CE8CD4E42B25164970B749446B5E065F285B98F4B279" },
+  { name = "lustre", version = "3.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "lustre", source = "hex", outer_checksum = "11498F93008E6935E78DC4F40A3ED3D84366283BDB012413704B48B0B0822E37" },
+  { name = "lustre_ssg", version = "0.2.1", build_tools = ["gleam"], requirements = ["simplifile", "lustre", "gleam_stdlib"], otp_app = "lustre_ssg", source = "hex", outer_checksum = "72B2C966DCF681FD480A6643A46F997E26107232E12BF452550069BAFD662ABC" },
+  { name = "lustre_ui", version = "0.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "gleam_community_colour", "lustre"], otp_app = "lustre_ui", source = "hex", outer_checksum = "EABD70C5054F6F5E312A72B10A3920705D1CB5C6577BDDD80FF28F09B513D73E" },
+  { name = "simplifile", version = "1.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "simplifile", source = "hex", outer_checksum = "0BD6F0E7DA1A7E11D18B8AD48453225CAFCA4C8CFB4513D217B372D2866C501C" },
+  { name = "tom", version = "0.3.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "tom", source = "hex", outer_checksum = "0831C73E45405A2153091226BF98FB485ED16376988602CC01A5FD086B82D577" },
 ]
 
 [requirements]
-gleam_stdlib = { version = "~> 0.30" }
+gleam_stdlib = { version = "~> 0.32" }
 gleeunit = { version = "~> 0.10" }
+jot = { version = "~> 0.1" }
 lustre = { version = "~> 3.0" }
-lustre_ssg = { version = "~> 0.1" }
-shellout = { version = "~> 1.4" }
-simplifile = { version = "~> 0.1" }
+lustre_ssg = { version = "~> 0.2" }
+lustre_ui = { version = "~> 0.2" }
+simplifile = { version = "~> 1.0" }
+tom = { version = "~> 0.3" }

@@ -1,7 +1,6 @@
 name = "app"
 version = "1.0.0"
 description = "Documentation for Lustre and its companion packages."
-target = "javascript"
 
 licences = ["MIT"]
 repository = { type = "github", user = "lustre-labs", repo = "lustre-labs.github.io" }
@@ -12,11 +11,13 @@ links = [
 gleam = ">= 0.32.0"
 
 [dependencies]
-gleam_stdlib = "~> 0.30"
+gleam_stdlib = "~> 0.32"
+jot = "~> 0.1"
 lustre = "~> 3.0"
+lustre_ui = "~> 0.2"
+tom = "~> 0.3"
 
 [dev-dependencies]
 gleeunit = "~> 0.10"
-lustre_ssg = "~> 0.1"
-shellout = "~> 1.4"
-simplifile = "~> 0.1"
+lustre_ssg = "~> 0.2"
+simplifile = "~> 1.0"

@@ -1,26 +1,45 @@
+title = "lustre/effect"
+route = "/api/lustre/effect"
+
+description = ""
+
+---
+
 # lustre/effect
 
 ## Constructing Effects
 
-### Effect | erlang javascript
+{api}
+{target=erlang javascript}
+
+### Effect
 
 ```gleam
 pub opaque type Effect(msg)
 ```
 
-### from | erlang javascript
+{api}
+{target=erlang javascript}
+
+### from
 
 ```gleam
 pub fn from(effect: fn(fn(msg) -> Nil) -> Nil) -> Effect(msg)
 ```
 
-### none | erlang javascript
+{api}
+{target=erlang javascript}
+
+### none
 
 ```gleam
 pub fn none() -> Effect(msg)
 ```
 
-### batch | erlang javascript
+{api}
+{target=erlang javascript}
+
+### batch
 
 ```gleam
 pub fn batch(effects: List(Effect(msg))) -> Effect(msg)
@@ -28,7 +47,10 @@ pub fn batch(effects: List(Effect(msg))) -> Effect(msg)
 
 ## Manipulating Effects
 
-### map | erlang javascript
+{api}
+{target=erlang javascript}
+
+### map
 
 ```gleam
 pub fn map(effect: Effect(a), f: fn(a) -> b) -> Effect(b)

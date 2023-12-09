@@ -1,4 +1,11 @@
-# Components
+title = "Side effects"
+route = "/docs/side-effects"
+
+description = ""
+
+---
+
+# Side effects
 
 Whoopsie, I haven't got round to writing this guide yet. If you haven't checked
 out the [quickstart guide](/docs/quickstart) that is probably the best place to

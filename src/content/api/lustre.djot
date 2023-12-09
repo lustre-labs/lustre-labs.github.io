@@ -1,3 +1,13 @@
+title = "lustre"
+route = "/api/lustre"
+
+description = """\
+ Documentation for the lustre module. This module is responsible for creating \
+ and starting Lustre applications as well as registering Lustre web components.
+"""
+
+---
+
 # lustre
 
 ## Applications
@@ -8,12 +18,16 @@ by other state mangement libraries like Redux and Vuex.
 
 Your applications will be made up of three fundamental parts:
 
-- A `Model` that represents the entire state of your application and an `init`
+• A `Model` that represents the entire state of your application and an `init`
   function to create it.
-- A `Msg` type that represents all the ways the outside world can communicate
+  
+
+• A `Msg` type that represents all the ways the outside world can communicate
   with your application and an `update` function that that modifies the model
   in response to these messages.
-- A `view` function that renders the current state of your application to the
+
+
+• A `view` function that renders the current state of your application to the
   DOM.
 
 ```
@@ -44,7 +58,9 @@ Your applications will be made up of three fundamental parts:
                                          +--------+
 ```
 
-### App | erlang javascript
+{api}
+{target=erlang javascript}
+### App
 
 ```gleam
 pub type App(flags, model, msg)
@@ -60,7 +76,9 @@ JavaScript target, and `start` will only succeed when ran in the browser.
 In the future we may have a way to run Lustre applications on the backend, if
 you have any ideas on how to achieve this I'd love to hear about them!
 
-### Error | erlang javascript
+{api}
+{target=erlang javascript}
+### Error
 
 ```gleam
 pub type Error {
@@ -96,7 +114,9 @@ pub fn main () {
 }
 ```
 
-### element | javascript
+{api}
+{target=javascript}
+### element
 
 ```gleam
 pub fn element(el: Element(msg)) -> App(Nil, Nil, msg)
@@ -110,7 +130,9 @@ It is possible for [`components`](#component) to be rendered inside an
 `element` application, and these components can be interactive with their own
 contained state and update loops.
 
-### simple | javascript
+{api}
+{target=javascript}
+### simple
 
 ```gleam
 pub fn simple(
@@ -124,7 +146,9 @@ A `simple` program introduces the Model-View-Update architecture but leaves out
 the ability to dispatch side effects. This means your programs are interactive
 but cannot talk to the outside world.
 
-### application | javascript
+{api}
+{target=javascript}
+### application
 
 ```gleam
 pub fn application(
@@ -137,9 +161,11 @@ pub fn application(
 The `application` constructor is the most complete way to build a Lustre app. As
 with [`simple`](#simple) it uses the Model-View-Update architecture, but now your
 init and update functions can return side effects to be performed by the runtime
-in the form of an [`Effect`](/api/lustre/effect.htmml#effect-type).
+in the form of an [`Effect`](/api/lustre/effect#effect-type).
 
-### start | javascript
+{api}
+{target=javascript}
+### start
 
 ```gleam
 pub fn start(
@@ -154,7 +180,9 @@ application onto and any flags to pass to the application on first init. This
 function returns a `Result` and may fail for a number of reasons. Check out the
 [`Error`](#error-type) type for more information.
 
-### destroy | javascript
+{api}
+{target=javascript}
+### destroy
 
 ```gleam
 pub fn destroy(app: App(flags, model, msg)) -> Result(Nil, Error)
@@ -180,7 +208,9 @@ in your top level application and passing it down to different view functions.
 This comes with the added benefit of it being much easier to reason about your
 UI as a whole.
 
-### component | javascript
+{api}
+{target=javascript}
+### component
 
 ```gleam
 pub fn component(
@@ -210,7 +240,9 @@ is the _only_ way to do things.
 
 ## Utilities
 
-### is_browser | erlang javascript
+{api}
+{target=erlang javascript}
+### is_browser
 
 ```gleam
 pub fn is_browser() -> Bool
@@ -224,7 +256,9 @@ This is a runtime check that will tell you just that. You could use this to crea
 a view function that renders something simple on the backend but more complex or
 interactive on the frontend.
 
-### is_registered | erlang javascript
+{api}
+{target=erlang javascript}
+### is_registered
 
 ```gleam
 pub fn is_registered(name: String) -> Bool

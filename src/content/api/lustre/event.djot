@@ -1,44 +1,65 @@
+title = "lustre/event"
+route = "/api/lustre/event"
+
+description = ""
+
+---
+
 # lustre/event
 
 ## Mouse events
 
-### on_click | erlang javascript
+{api}
+{target=erlang javascript}
+### on_click
 
 ```gleam
 pub fn on_click(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_down | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_down
 
 ```gleam
 pub fn on_mouse_down(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_up | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_up
 
 ```gleam
 pub fn on_mouse_up(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_enter | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_enter
 
 ```gleam
 pub fn on_mouse_enter(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_leave | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_leave
 
 ```gleam
 pub fn on_mouse_leave(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_over | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_over
 
 ```gleam
 pub fn on_mouse_over(msg: msg) -> Attribute(msg)
 ```
 
-### on_mouse_out | erlang javascript
+{api}
+{target=erlang javascript}
+### on_mouse_out
 
 ```gleam
 pub fn on_mouse_out(msg: msg) -> Attribute(msg)
@@ -46,19 +67,25 @@ pub fn on_mouse_out(msg: msg) -> Attribute(msg)
 
 ## Keyboard events
 
-### on_keypress | erlang javascript
+{api}
+{target=erlang javascript}
+### on_keypress
 
 ```gleam
 pub fn on_keypress(msg: fn(String) -> msg) -> Attribute(msg)
 ```
 
-### on_keydown | erlang javascript
+{api}
+{target=erlang javascript}
+### on_keydown
 
 ```gleam
 pub fn on_keydown(msg: fn(String) -> msg) -> Attribute(msg)
 ```
 
-### on_keyup | erlang javascript
+{api}
+{target=erlang javascript}
+### on_keyup
 
 ```gleam
 pub fn on_keyup(msg: fn(String) -> msg) -> Attribute(msg)
@@ -66,19 +93,25 @@ pub fn on_keyup(msg: fn(String) -> msg) -> Attribute(msg)
 
 ## Form messages
 
-### on_input | erlang javascript
+{api}
+{target=erlang javascript}
+### on_input
 
 ```gleam
 pub fn on_input(msg: fn(String) -> msg) -> Attribute(msg)
 ```
 
-### on_change | erlang javascript
+{api}
+{target=erlang javascript}
+### on_change
 
 ```gleam
 pub fn on_change(msg: fn(Bool) -> msg) -> Attribute(msg)
 ```
 
-### on_submit | erlang javascript
+{api}
+{target=erlang javascript}
+### on_submit
 
 ```gleam
 pub fn on_submit(msg: msg) -> Attribute(msg)
@@ -86,13 +119,17 @@ pub fn on_submit(msg: msg) -> Attribute(msg)
 
 ## Focus events
 
-### on_focus | erlang javascript
+{api}
+{target=erlang javascript}
+### on_focus
 
 ```gleam
 pub fn on_focus(msg: msg) -> Attribute(msg)
 ```
 
-### on_blur | erlang javascript
+{api}
+{target=erlang javascript}
+### on_blur
 
 ```gleam
 pub fn on_blur(msg: msg) -> Attribute(msg)
@@ -100,7 +137,9 @@ pub fn on_blur(msg: msg) -> Attribute(msg)
 
 ## Custom events
 
-### on | erlang javascript
+{api}
+{target=erlang javascript}
+### on
 
 ```gleam
 pub fn on(
@@ -109,37 +148,49 @@ pub fn on(
 ) -> Attribute(msg)
 ```
 
-### prevent_default | erlang javascript
+{api}
+{target=erlang javascript}
+### prevent_default
 
 ```gleam
 pub fn prevent_default(event: Dynamic) -> Nil
 ```
 
-### stop_propagation | erlang javascript
+{api}
+{target=erlang javascript}
+### stop_propagation
 
 ```gleam
 pub fn stop_propagation(event: Dynamic) -> Nil
 ```
 
-### value | erlang javascript
+{api}
+{target=erlang javascript}
+### value
 
 ```gleam
 pub fn value(event: Dynamic) -> Decoder(String)
 ```
 
-### checked | erlang javascript
+{api}
+{target=erlang javascript}
+### checked
 
 ```gleam
 pub fn checked(event: Dynamic) -> Decoder(Bool)
 ```
 
-### mouse_position | erlang javascript
+{api}
+{target=erlang javascript}
+### mouse_position
 
 ```gleam
 pub fn mouse_position(event: Dynamic) -> Decoder(#(Float, Float))
 ```
 
-### emit | javascript
+{api}
+{target=javascript}
+### emit
 
 ```gleam
 pub fn emit(event: String, data: any) -> Effect(msg)

@@ -1,7 +1,7 @@
-import highlight from "highlight.js/lib/core";
-import html from "highlight.js/lib/languages/xml";
-import javascript from "highlight.js/lib/languages/javascript";
-import shell from "highlight.js/lib/languages/shell";
+import highlight from "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/es/core.min.js";
+import html from "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/es/languages/xml.min.js";
+import javascript from "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/es/languages/javascript.min.js";
+import shell from "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/es/languages/shell.min.js";
 
 // SYNTAX HIGHLIGHTING ---------------------------------------------------------
 
@@ -15,32 +15,31 @@ highlight.highlightAll();
 
 // DEEP LINKING CODE BLOCKS ----------------------------------------------------
 
-const base = "/";
-const stdlib = "https://hexdocs.pm/gleam_stdlib/gleam/";
+const stdlib = "https://hexdocs.pm/gleam_stdlib/gleam";
 const links = {
-  App: `${base}api/lustre.html#app-type`,
-  Attribute: `${base}api/lustre/attribute.html#attribute-type`,
-  Bool: `${stdlib}bool.html`,
-  Decoder: `${stdlib}dynamic.html#Decoder`,
-  Dynamic: `${stdlib}dynamic.html#Dynamic`,
-  Effect: `${base}api/lustre/effect.html#effect-type`,
-  Element: `${base}api/lustre/element.html#element-type`,
-  Error: `${base}api/lustre.html#error-type`,
-  Float: `${stdlib}float.html`,
-  Int: `${stdlib}int.html`,
-  List: `${stdlib}list.html`,
-  Map: `${stdlib}map.html#Map`,
-  Option: `${stdlib}option.html#Option`,
-  Result: `${stdlib}result.html`,
-  String: `${stdlib}string.html`,
-  StringBuilder: `${stdlib}string_builder.html#StringBuilder`,
+  App: `/api/lustre.html#app-type`,
+  Attribute: `/api/lustre/attribute.html#attribute-type`,
+  Bool: `${stdlib}/bool.html`,
+  Decoder: `${stdlib}/dynamic.html#Decoder`,
+  Dynamic: `${stdlib}/dynamic.html#Dynamic`,
+  Effect: `/api/lustre/effect.html#effect-type`,
+  Element: `/api/lustre/element.html#element-type`,
+  Error: `/api/lustre.html#error-type`,
+  Float: `${stdlib}/float.html`,
+  Int: `${stdlib}/int.html`,
+  List: `${stdlib}/list.html`,
+  Map: `${stdlib}/map.html#Map`,
+  Option: `${stdlib}/option.html#Option`,
+  Result: `${stdlib}/result.html`,
+  String: `${stdlib}/string.html`,
+  StringBuilder: `${stdlib}/string_builder.html#StringBuilder`,
 };
 
 for (const el of document.querySelectorAll("code.hljs")) {
   for (const [t, url] of Object.entries(links)) {
     el.innerHTML = el.innerHTML.replace(
       new RegExp(`\\b${t}\\b`, "g"),
-      `<a href="${url}" class="hover:underline">${t}</a>`
+      `<a href="${url}">${t}</a>`
     );
   }
 }
