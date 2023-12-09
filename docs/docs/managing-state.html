@@ -1,0 +1,160 @@
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lustre - catchy tagline.</title><meta property="og:type" content="article"><meta property="og:title" content="Components"><meta property="og:url" content="https://lustre.build/docs/managing-state"><meta property="og:description" content=""><link rel="stylesheet" href="/lustre-ui.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@300&display=swap"><script type="module" src="/app.js"></script></head><body><div class="lustre-ui-aside content-last"><div class="lustre-ui-aside"><main class="lustre-ui-box"><div class="lustre-ui-stack loose"><section class="lustre-ui-stack"><div id="managing-state" class="lustre-ui-aside align-centre"><h1>Managing state</h1><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>We saw in the quickstart guide that Lustre applications are built using the
+Model-View-Update architecture. For folks used to building with React or most
+other frontend frameworks, it can be a bit of a shock to work without access to
+local component state.</p><p>In this guide we&#39;ll look at how to manage state in a variety of scenarios
+_without_ using local component state. It&#39;s important to get a solid grasp on
+this _before_ looking at Lustre&#39;s approach to components because they&#39;re built on
+the same principles!</p></section><section class="lustre-ui-stack"><div id="semi-encapsulated-components" class="lustre-ui-aside align-centre"><h2>Semi-encapsulated components</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Before reaching for Lustre&#39;s stateful components, you might consider a
+semi-encapsulated approach. This is where you have a separate Gleam module that
+defines it&#39;s own `Model`, `init`, `Msg`, and `update` (and optionally a `view`
+too) but still manage things from your top-level application.</p><p>For example, we may define a `counter` module:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">// app/counter.gleam
+
+import gleam/int
+import lustre/element.{Element}
+import lustre/element/html
+import lustre/event
+
+pub opaque type Model {
+  Model(Int)
+}
+
+pub fn init() -&gt; Model {
+  Model(0)
+}
+
+pub type Msg {
+  Incr
+  Decr
+  Double
+  Reset
+}
+
+pub fn update(model: Model, msg: Msg) -&gt; Model {
+  let Model(count) = model
+  case msg {
+    Incr -&gt; Model(count + 1)
+    Decr -&gt; Model(count - 1)
+    Double -&gt; Model(count * 2)
+    Reset -&gt; Model(0)
+  }
+}
+
+pub fn view(model: Model) -&gt; Element(Msg) {
+  let Model(count) = model
+  let count = int.to_string(count)
+
+  html.div([], [
+    html.p([], [element.text(count)]),
+    html.button([event.on_click(Decr)], [html.text(&quot;-&quot;)]),
+    html.button([event.on_click(Incr)], [html.text(&quot;+&quot;)]),
+    html.button([event.on_click(Double)], [html.text(&quot;x2&quot;)]),
+    html.button([event.on_click(Reset)], [html.text(&quot;Reset&quot;)]),
+  ])
+}
+</code></pre><p>Now we can create and manage multiple counters in our main application:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">// app.gleam
+
+import app/counter
+import lustre
+import lustre/element.{Element}
+import lustre/element/html
+
+pub fn main() {
+  let app = lustre.simple(init, update, view)
+  let assert Ok(_) = lustre.start(app, &quot;[data-lustre-app]&quot;, Nil)
+}
+
+pub type Model {
+  Model(
+    // Our model will hold two separate counters, each with their own independent
+    // state.
+    counter1: counter.Model,
+    counter2: counter.Model,
+  )
+}
+
+pub fn init(_) -&gt; Model {
+  Model(
+    counter.init(),
+    counter.init(),
+  )
+}
+
+pub type Msg {
+  //
+  Counter1(counter.Msg)
+  Counter2(counter.Msg)
+}
+
+pub fn update(model: Model, msg: Msg) -&gt; Model {
+  case msg {
+    Counter1(msg) -&gt; Model(..model,
+      counter1: counter.update(model.counter1, msg)
+    )
+
+    Counter2(msg) -&gt; Model(..model,
+      counter2: counter.update(model.counter2, msg)
+    )
+  }
+}
+
+pub fn view(model: Model) -&gt; Element(Msg) {
+  let Model(counter1, counter2) = model
+
+  html.div([], [
+    counter.view(counter1) |&gt; element.map(Counter1),
+    counter.view(counter2) |&gt; element.map(Counter2),
+  ])
+}
+</code></pre><p>Note that we&#39;re using <a href="/api/lustre/element#map">`element.map`</a> to map the events
+from each counter view to a `Msg` type our application understands! In Lustre,
+the <a href="/api/lustre/element#element-type">`Element`</a> type is parameterised by the
+type of messages they can emit. This is how Lustre achieves type-safe event handling.</p><p>This approach can get quite sophisticated. For example you may want to make your
+component&#39;s `Model` type opaque and optionally provide some helper functions to
+extract any data parents may need to know about. You might also choose to split
+your component&#39;s `Msg` type and keep a separate `InternalMsg` type that can&#39;t
+be constructed outside of the module.</p><p>Taking the counter example from above, perhaps we want parents to only be able to
+reset the counter and query the current count, but all other messages are handled
+internally:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub type Msg {
+  Reset
+  Internal(InternalMsg)
+}
+
+pub opaque type InternalMsg {
+  Incr
+  Decr
+  Double
+}
+
+pub fn count(model: Model) -&gt; Int {
+  let Model(count) = model
+  count
+}
+</code></pre><p>The parent could still have a button to reset all counters back to `0`, but it
+wouldn&#39;t be able to mess with the internal state in any other way.</p><p>After a while you may you find your semi-encapsulated components have a lot of
+internal state or many messages that are only relevant to that component. If that
+happens, it may be time to consider a <a href="/docs/components">stateful component</a>
+instead.</p></section><section class="lustre-ui-stack"><div id="separating-page-state" class="lustre-ui-aside align-centre"><h2>Separating page state</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">type Model {
+
+}
+</code></pre></section><section class="lustre-ui-stack"><div id="preserving-state-across-page-changes" class="lustre-ui-aside align-centre"><h2>Preserving state across page changes</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">type Model = Map(String, PageModel)
+
+type PageModel {
+
+}
+</code></pre></section><section class="lustre-ui-stack"><div id="sharing-state-between-pages" class="lustre-ui-aside align-centre"><h2>Sharing state between pages</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import gleam/map.{Map}
+
+type Model {
+  Model(
+    shared: SharedModel,
+    pages: Map(String, PageModel)
+  )
+}
+
+type SharedModel {
+  SharedModel()
+}
+
+type PageModel {
+
+}
+</code></pre></section></div></main><div class="lustre-ui-stack lustre-ui-box"><div class="lustre-ui-stack packed"><a href="#managing-state">Managing state</a></div><div class="lustre-ui-stack packed"><a href="#semi-encapsulated-components">Semi-encapsulated components</a><a href="#separating-page-state">Separating page state</a><a href="#preserving-state-across-page-changes">Preserving state across page changes</a><a href="#sharing-state-between-pages">Sharing state between pages</a></div></div></div><div class="lustre-ui-stack lustre-ui-box loose"><h2>Lustre.</h2><nav class="lustre-ui-stack tight"><h3>Reference</h3><a href="/api/lustre">lustre</a><a href="/api/lustre/attribute">lustre/attribute</a><a href="/api/lustre/effect">lustre/effect</a><a href="/api/lustre/element">lustre/element</a><a href="/api/lustre/element/html">lustre/element/html</a><a href="/api/lustre/element/svg">lustre/element/svg</a><a href="/api/lustre/event">lustre/event</a></nav><nav class="lustre-ui-stack tight"><h3>Tutorial</h3><a href="/docs/quickstart">Quickstart</a><a href="/docs/managing-state">Managing state</a><a href="/docs/side-effects">Side effects</a><a href="/docs/server-side-rendering">Server-side rendering</a><a href="/docs/components">Components</a></nav><nav class="lustre-ui-stack tight"><h3>Guides</h3><a href="/guides/wisp">Integrating with Wisp</a></nav></div></div></body></html>

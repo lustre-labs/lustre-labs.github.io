@@ -1,0 +1,395 @@
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lustre - catchy tagline.</title><meta property="og:type" content="article"><meta property="og:title" content="lustre/element/html"><meta property="og:url" content="https://lustre.build/api/lustre/element/html"><meta property="og:description" content=""><link rel="stylesheet" href="/lustre-ui.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@300&display=swap"><script type="module" src="/app.js"></script></head><body><div class="lustre-ui-aside content-last"><div class="lustre-ui-aside"><main class="lustre-ui-box"><div class="lustre-ui-stack loose"><section class="lustre-ui-stack"><div id="lustre/element/html" class="lustre-ui-aside align-centre"><h1>lustre/element/html</h1><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="main-root" class="lustre-ui-aside align-centre"><h2>Main Root</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="html" class="lustre-ui-aside align-centre"><h3>html</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn html(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="document-metadata" class="lustre-ui-aside align-centre"><h2>Document Metadata</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="base" class="lustre-ui-aside align-centre"><h3>base</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn base(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="head" class="lustre-ui-aside align-centre"><h3>head</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn head(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="link" class="lustre-ui-aside align-centre"><h3>link</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn link(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="meta" class="lustre-ui-aside align-centre"><h3>meta</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn meta(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="style" class="lustre-ui-aside align-centre"><h3>style</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn style(attrs: List(Attribute(msg)), css: String) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="title" class="lustre-ui-aside align-centre"><h3>title</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn title(attrs: List(Attribute(msg)), content: String) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="sectioning-root" class="lustre-ui-aside align-centre"><h2>Sectioning root</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="body" class="lustre-ui-aside align-centre"><h3>body</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn body(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="content-sectioning" class="lustre-ui-aside align-centre"><h2>Content sectioning</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="address" class="lustre-ui-aside align-centre"><h3>address</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn address(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="article" class="lustre-ui-aside align-centre"><h3>article</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn article(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="aside" class="lustre-ui-aside align-centre"><h3>aside</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn aside(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="footer" class="lustre-ui-aside align-centre"><h3>footer</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn footer(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="header" class="lustre-ui-aside align-centre"><h3>header</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn header(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h1" class="lustre-ui-aside align-centre"><h3>h1</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h1(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h2" class="lustre-ui-aside align-centre"><h3>h2</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h2(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h3" class="lustre-ui-aside align-centre"><h3>h3</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h3(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h4" class="lustre-ui-aside align-centre"><h3>h4</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h4(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h5" class="lustre-ui-aside align-centre"><h3>h5</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h5(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="h6" class="lustre-ui-aside align-centre"><h3>h6</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn h6(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="hgroup" class="lustre-ui-aside align-centre"><h3>hgroup</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn hgroup(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="main" class="lustre-ui-aside align-centre"><h3>main</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn main(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="nav" class="lustre-ui-aside align-centre"><h3>nav</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn nav(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="section" class="lustre-ui-aside align-centre"><h3>section</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn section(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="search" class="lustre-ui-aside align-centre"><h3>search</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn search(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="text-content" class="lustre-ui-aside align-centre"><h2>Text content</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="blockquote" class="lustre-ui-aside align-centre"><h3>blockquote</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn blockquote(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="dd" class="lustre-ui-aside align-centre"><h3>dd</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn dd(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="div" class="lustre-ui-aside align-centre"><h3>div</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn div(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="dl" class="lustre-ui-aside align-centre"><h3>dl</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn dl(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="dt" class="lustre-ui-aside align-centre"><h3>dt</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn dt(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="figcaption" class="lustre-ui-aside align-centre"><h3>figcaption</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn figcaption(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="figure" class="lustre-ui-aside align-centre"><h3>figure</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn figure(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="hr" class="lustre-ui-aside align-centre"><h3>hr</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn hr(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="li" class="lustre-ui-aside align-centre"><h3>li</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn li(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="menu" class="lustre-ui-aside align-centre"><h3>menu</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn menu(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="ol" class="lustre-ui-aside align-centre"><h3>ol</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn ol(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="p" class="lustre-ui-aside align-centre"><h3>p</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn p(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="pre" class="lustre-ui-aside align-centre"><h3>pre</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn pre(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="ul" class="lustre-ui-aside align-centre"><h3>ul</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn ul(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="inline-text-semantics" class="lustre-ui-aside align-centre"><h2>Inline text semantics</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="a" class="lustre-ui-aside align-centre"><h3>a</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn a(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="abbr" class="lustre-ui-aside align-centre"><h3>abbr</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn abbr(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="b" class="lustre-ui-aside align-centre"><h3>b</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn b(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="bdi" class="lustre-ui-aside align-centre"><h3>bdi</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn bdi(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="bdo" class="lustre-ui-aside align-centre"><h3>bdo</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn bdo(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="br" class="lustre-ui-aside align-centre"><h3>br</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn br(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="cite" class="lustre-ui-aside align-centre"><h3>cite</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn cite(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="code" class="lustre-ui-aside align-centre"><h3>code</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn code(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="data" class="lustre-ui-aside align-centre"><h3>data</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn data(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="dfn" class="lustre-ui-aside align-centre"><h3>dfn</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn dfn(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="em" class="lustre-ui-aside align-centre"><h3>em</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn em(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="i" class="lustre-ui-aside align-centre"><h3>i</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn i(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="kbd" class="lustre-ui-aside align-centre"><h3>kbd</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn kbd(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="mark" class="lustre-ui-aside align-centre"><h3>mark</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn mark(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="q" class="lustre-ui-aside align-centre"><h3>q</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn q(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="rp" class="lustre-ui-aside align-centre"><h3>rp</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn rp(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="rt" class="lustre-ui-aside align-centre"><h3>rt</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn rt(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="ruby" class="lustre-ui-aside align-centre"><h3>ruby</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn ruby(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="s" class="lustre-ui-aside align-centre"><h3>s</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn s(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="samp" class="lustre-ui-aside align-centre"><h3>samp</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn samp(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="small" class="lustre-ui-aside align-centre"><h3>small</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn small(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="span" class="lustre-ui-aside align-centre"><h3>span</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn span(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="strong" class="lustre-ui-aside align-centre"><h3>strong</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn strong(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="sub" class="lustre-ui-aside align-centre"><h3>sub</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn sub(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="sup" class="lustre-ui-aside align-centre"><h3>sup</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn sup(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="time" class="lustre-ui-aside align-centre"><h3>time</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn time(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="u" class="lustre-ui-aside align-centre"><h3>u</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn u(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="var" class="lustre-ui-aside align-centre"><h3>var</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn var(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="wbr" class="lustre-ui-aside align-centre"><h3>wbr</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn wbr(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="image-and-multimedia" class="lustre-ui-aside align-centre"><h2>Image and multimedia</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="area" class="lustre-ui-aside align-centre"><h3>area</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn area(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="audio" class="lustre-ui-aside align-centre"><h3>audio</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn audio(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="img" class="lustre-ui-aside align-centre"><h3>img</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn img(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="map" class="lustre-ui-aside align-centre"><h3>map</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn map(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="track" class="lustre-ui-aside align-centre"><h3>track</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn track(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="video" class="lustre-ui-aside align-centre"><h3>video</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn video(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="embedded-content" class="lustre-ui-aside align-centre"><h2>Embedded content</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="embed" class="lustre-ui-aside align-centre"><h3>embed</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn embed(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="iframe" class="lustre-ui-aside align-centre"><h3>iframe</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn iframe(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="object" class="lustre-ui-aside align-centre"><h3>object</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn object(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="picture" class="lustre-ui-aside align-centre"><h3>picture</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn picture(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="portal" class="lustre-ui-aside align-centre"><h3>portal</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn portal(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="source" class="lustre-ui-aside align-centre"><h3>source</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn source(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="svg-and-mathml" class="lustre-ui-aside align-centre"><h2>SVG and MathML</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="svg" class="lustre-ui-aside align-centre"><h3>svg</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn svg(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+
+{api}
+{target=erlang javascript}
+### math
+
+```gleam
+pub fn math(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="scripting" class="lustre-ui-aside align-centre"><h2>Scripting</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="canvas" class="lustre-ui-aside align-centre"><h3>canvas</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn canvas(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="noscript" class="lustre-ui-aside align-centre"><h3>noscript</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn noscript(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="script" class="lustre-ui-aside align-centre"><h3>script</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn script(attrs: List(Attribute(msg)), js: String) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="demarcating-edits" class="lustre-ui-aside align-centre"><h2>Demarcating edits</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="del" class="lustre-ui-aside align-centre"><h3>del</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn del(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="ins" class="lustre-ui-aside align-centre"><h3>ins</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn ins(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="table-content" class="lustre-ui-aside align-centre"><h2>Table content</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="caption" class="lustre-ui-aside align-centre"><h3>caption</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn caption(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="col" class="lustre-ui-aside align-centre"><h3>col</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn col(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="colgroup" class="lustre-ui-aside align-centre"><h3>colgroup</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn colgroup(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="table" class="lustre-ui-aside align-centre"><h3>table</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn table(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="tbody" class="lustre-ui-aside align-centre"><h3>tbody</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn tbody(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="td" class="lustre-ui-aside align-centre"><h3>td</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn td(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="tfoot" class="lustre-ui-aside align-centre"><h3>tfoot</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn tfoot(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="th" class="lustre-ui-aside align-centre"><h3>th</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn th(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="thead" class="lustre-ui-aside align-centre"><h3>thead</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn thead(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="tr" class="lustre-ui-aside align-centre"><h3>tr</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn tr(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="forms" class="lustre-ui-aside align-centre"><h2>Forms</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="button" class="lustre-ui-aside align-centre"><h3>button</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn button(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="datalist" class="lustre-ui-aside align-centre"><h3>datalist</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn datalist(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="fieldset" class="lustre-ui-aside align-centre"><h3>fieldset</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn fieldset(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="form" class="lustre-ui-aside align-centre"><h3>form</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn form(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="input" class="lustre-ui-aside align-centre"><h3>input</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn input(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="label" class="lustre-ui-aside align-centre"><h3>label</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn label(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="legend" class="lustre-ui-aside align-centre"><h3>legend</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn legend(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="meter" class="lustre-ui-aside align-centre"><h3>meter</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn meter(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="optgroup" class="lustre-ui-aside align-centre"><h3>optgroup</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn optgroup(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="option" class="lustre-ui-aside align-centre"><h3>option</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn option(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="output" class="lustre-ui-aside align-centre"><h3>output</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn output(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="progress" class="lustre-ui-aside align-centre"><h3>progress</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn progress(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="select" class="lustre-ui-aside align-centre"><h3>select</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn select(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="textarea" class="lustre-ui-aside align-centre"><h3>textarea</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn textarea(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="interactive-elements" class="lustre-ui-aside align-centre"><h2>Interactive elements</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="details" class="lustre-ui-aside align-centre"><h3>details</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn details(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="dialog" class="lustre-ui-aside align-centre"><h3>dialog</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn dialog(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="summary" class="lustre-ui-aside align-centre"><h3>summary</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn summary(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="web-components" class="lustre-ui-aside align-centre"><h2>Web components</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="slot" class="lustre-ui-aside align-centre"><h3>slot</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn slot(attrs: List(Attribute(msg))) -&gt; Element(msg)
+</code></pre></section><section class="lustre-ui-stack"><div id="template" class="lustre-ui-aside align-centre"><h3>template</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn template(
+  attrs: List(Attribute(msg)),
+  children: List(Element(msg)),
+) -&gt; Element(msg)
+</code></pre></section></div></main><div class="lustre-ui-stack lustre-ui-box"><div class="lustre-ui-stack packed"><a href="#lustre/element/html">lustre/element/html</a></div><div class="lustre-ui-stack packed"><a href="#main-root">Main Root</a></div><div class="lustre-ui-stack packed"><a href="#html">html</a></div><div class="lustre-ui-stack packed"><a href="#document-metadata">Document Metadata</a></div><div class="lustre-ui-stack packed"><a href="#base">base</a><a href="#head">head</a><a href="#link">link</a><a href="#meta">meta</a><a href="#style">style</a><a href="#title">title</a></div><div class="lustre-ui-stack packed"><a href="#sectioning-root">Sectioning root</a></div><div class="lustre-ui-stack packed"><a href="#body">body</a></div><div class="lustre-ui-stack packed"><a href="#content-sectioning">Content sectioning</a></div><div class="lustre-ui-stack packed"><a href="#address">address</a><a href="#article">article</a><a href="#aside">aside</a><a href="#footer">footer</a><a href="#header">header</a><a href="#h1">h1</a><a href="#h2">h2</a><a href="#h3">h3</a><a href="#h4">h4</a><a href="#h5">h5</a><a href="#h6">h6</a><a href="#hgroup">hgroup</a><a href="#main">main</a><a href="#nav">nav</a><a href="#section">section</a><a href="#search">search</a></div><div class="lustre-ui-stack packed"><a href="#text-content">Text content</a></div><div class="lustre-ui-stack packed"><a href="#blockquote">blockquote</a><a href="#dd">dd</a><a href="#div">div</a><a href="#dl">dl</a><a href="#dt">dt</a><a href="#figcaption">figcaption</a><a href="#figure">figure</a><a href="#hr">hr</a><a href="#li">li</a><a href="#menu">menu</a><a href="#ol">ol</a><a href="#p">p</a><a href="#pre">pre</a><a href="#ul">ul</a></div><div class="lustre-ui-stack packed"><a href="#inline-text-semantics">Inline text semantics</a></div><div class="lustre-ui-stack packed"><a href="#a">a</a><a href="#abbr">abbr</a><a href="#b">b</a><a href="#bdi">bdi</a><a href="#bdo">bdo</a><a href="#br">br</a><a href="#cite">cite</a><a href="#code">code</a><a href="#data">data</a><a href="#dfn">dfn</a><a href="#em">em</a><a href="#i">i</a><a href="#kbd">kbd</a><a href="#mark">mark</a><a href="#q">q</a><a href="#rp">rp</a><a href="#rt">rt</a><a href="#ruby">ruby</a><a href="#s">s</a><a href="#samp">samp</a><a href="#small">small</a><a href="#span">span</a><a href="#strong">strong</a><a href="#sub">sub</a><a href="#sup">sup</a><a href="#time">time</a><a href="#u">u</a><a href="#var">var</a><a href="#wbr">wbr</a></div><div class="lustre-ui-stack packed"><a href="#image-and-multimedia">Image and multimedia</a></div><div class="lustre-ui-stack packed"><a href="#area">area</a><a href="#audio">audio</a><a href="#img">img</a><a href="#map">map</a><a href="#track">track</a><a href="#video">video</a></div><div class="lustre-ui-stack packed"><a href="#embedded-content">Embedded content</a></div><div class="lustre-ui-stack packed"><a href="#embed">embed</a><a href="#iframe">iframe</a><a href="#object">object</a><a href="#picture">picture</a><a href="#portal">portal</a><a href="#source">source</a></div><div class="lustre-ui-stack packed"><a href="#svg-and-mathml">SVG and MathML</a></div><div class="lustre-ui-stack packed"><a href="#svg">svg</a></div><div class="lustre-ui-stack packed"><a href="#scripting">Scripting</a></div><div class="lustre-ui-stack packed"><a href="#canvas">canvas</a><a href="#noscript">noscript</a><a href="#script">script</a></div><div class="lustre-ui-stack packed"><a href="#demarcating-edits">Demarcating edits</a></div><div class="lustre-ui-stack packed"><a href="#del">del</a><a href="#ins">ins</a></div><div class="lustre-ui-stack packed"><a href="#table-content">Table content</a></div><div class="lustre-ui-stack packed"><a href="#caption">caption</a><a href="#col">col</a><a href="#colgroup">colgroup</a><a href="#table">table</a><a href="#tbody">tbody</a><a href="#td">td</a><a href="#tfoot">tfoot</a><a href="#th">th</a><a href="#thead">thead</a><a href="#tr">tr</a></div><div class="lustre-ui-stack packed"><a href="#forms">Forms</a></div><div class="lustre-ui-stack packed"><a href="#button">button</a><a href="#datalist">datalist</a><a href="#fieldset">fieldset</a><a href="#form">form</a><a href="#input">input</a><a href="#label">label</a><a href="#legend">legend</a><a href="#meter">meter</a><a href="#optgroup">optgroup</a><a href="#option">option</a><a href="#output">output</a><a href="#progress">progress</a><a href="#select">select</a><a href="#textarea">textarea</a></div><div class="lustre-ui-stack packed"><a href="#interactive-elements">Interactive elements</a></div><div class="lustre-ui-stack packed"><a href="#details">details</a><a href="#dialog">dialog</a><a href="#summary">summary</a></div><div class="lustre-ui-stack packed"><a href="#web-components">Web components</a></div><div class="lustre-ui-stack packed"><a href="#slot">slot</a><a href="#template">template</a></div></div></div><div class="lustre-ui-stack lustre-ui-box loose"><h2>Lustre.</h2><nav class="lustre-ui-stack tight"><h3>Reference</h3><a href="/api/lustre">lustre</a><a href="/api/lustre/attribute">lustre/attribute</a><a href="/api/lustre/effect">lustre/effect</a><a href="/api/lustre/element">lustre/element</a><a href="/api/lustre/element/html">lustre/element/html</a><a href="/api/lustre/element/svg">lustre/element/svg</a><a href="/api/lustre/event">lustre/event</a></nav><nav class="lustre-ui-stack tight"><h3>Tutorial</h3><a href="/docs/quickstart">Quickstart</a><a href="/docs/managing-state">Managing state</a><a href="/docs/side-effects">Side effects</a><a href="/docs/server-side-rendering">Server-side rendering</a><a href="/docs/components">Components</a></nav><nav class="lustre-ui-stack tight"><h3>Guides</h3><a href="/guides/wisp">Integrating with Wisp</a></nav></div></div></body></html>

@@ -1,0 +1,129 @@
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lustre - catchy tagline.</title><meta property="og:type" content="article"><meta property="og:title" content="lustre"><meta property="og:url" content="https://lustre.build/api/lustre"><meta property="og:description" content="Documentation for the lustre module. This module is responsible for creating and starting Lustre applications as well as registering Lustre web components.
+"><link rel="stylesheet" href="/lustre-ui.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@300&display=swap"><script type="module" src="/app.js"></script></head><body><div class="lustre-ui-aside content-last"><div class="lustre-ui-aside"><main class="lustre-ui-box"><div class="lustre-ui-stack loose"><section class="lustre-ui-stack"><div id="lustre" class="lustre-ui-aside align-centre"><h1>lustre</h1><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="applications" class="lustre-ui-aside align-centre"><h2>Applications</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>On the client, Lustre applications are built on the Model-View-Update architecture.
+This pattern was popularised by the Elm programming language before being adopted
+by other state mangement libraries like Redux and Vuex.</p><p>Your applications will be made up of three fundamental parts:</p><p>• A `Model` that represents the entire state of your application and an `init`
+  function to create it.
+  </p><p>• A `Msg` type that represents all the ways the outside world can communicate
+  with your application and an `update` function that that modifies the model
+  in response to these messages.</p><p>• A `view` function that renders the current state of your application to the
+  DOM.</p><pre class="lustre-ui-box"><code data-lang="none" class="language-none">                                         ┌--------+
+                                         |        |
+                                         | update |
+                                         |        |
+                                         +--------+
+                                           ^    |
+                                           |    |
+                                       Msg |    | #(Model, Effect(Msg))
+                                           |    |
+                                           |    v
+┌------+                         ┌------------------------+
+|      |  #(Model, Effect(Msg))  |                        |
+| init |------------------------&gt;|     Lustre Runtime     |
+|      |                         |                        |
++------+                         +------------------------+
+                                           ^    |
+                                           |    |
+                                       Msg |    | Model
+                                           |    |
+                                           |    v
+                                         ┌--------+
+                                         |        |
+                                         |  view  |
+                                         |        |
+                                         +--------+
+</code></pre></section><section class="lustre-ui-stack"><div id="app-type" class="lustre-ui-aside align-centre"><h3>App</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub type App(flags, model, msg)
+</code></pre><p>The `App` type represents all the parts that make up a Lustre program in the
+Model-View-Update architecture along with the runtime necessary to run it.</p><p>Although the type itself is exposed to both the Erlang and JavaScript targets,
+the functions in this module to construct an `App` are only available in the
+JavaScript target, and `start` will only succeed when ran in the browser.</p><p>In the future we may have a way to run Lustre applications on the backend, if
+you have any ideas on how to achieve this I&#39;d love to hear about them!</p></section><section class="lustre-ui-stack"><div id="error-type" class="lustre-ui-aside align-centre"><h3>Error</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub type Error {
+  AppAlreadyStarted
+  AppNotYetStarted
+  BadComponentName
+  ComponentAlreadyRegistered
+  ElementNotFound
+  NotABrowser
+}
+</code></pre><p>The `Error` type represents all the ways that a Lustre program can fail. These
+include things like trying to start an application that has already been started,
+registering a component with a name that is not valid, or trying to start an
+application in a context that is not a browser.</p><p>Often you will want to perform a couple of these actions together, and unifying
+the error type makes this easy. In many of the examples we `let assert` that the
+result is `Ok` but if you wanted to be a bit more dilligent you might use
+`result.try` instead:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import gleam/result
+import lustre
+
+pub fn main () {
+  use _ &lt;- result.try(lustre.component(&quot;my-component&quot;, ...))
+  let app = lustre.application(...)
+  use dispatch &lt;- result.try(lustre.start(app, &quot;[data-lustre-app]&quot;, Nil))
+
+  ...
+}
+</code></pre></section><section class="lustre-ui-stack"><div id="element" class="lustre-ui-aside align-centre"><h3>element</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn element(el: Element(msg)) -&gt; App(Nil, Nil, msg)
+</code></pre><p>An `element` application is the simplest kind of Lustre program. It takes an
+`Element` to render and renders it to the DOM. These applications hold no state
+and do not respond to messages, but that doesn&#39;t mean they are not interactive!</p><p>It is possible for <a href="#component">`components`</a> to be rendered inside an
+`element` application, and these components can be interactive with their own
+contained state and update loops.</p></section><section class="lustre-ui-stack"><div id="simple" class="lustre-ui-aside align-centre"><h3>simple</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn simple(
+  init: fn(flags) -&gt; model,
+  update: fn(model, msg) -&gt; model,
+  view: fn(model) -&gt; Element(msg)
+) -&gt; App(flags, model, msg)
+</code></pre><p>A `simple` program introduces the Model-View-Update architecture but leaves out
+the ability to dispatch side effects. This means your programs are interactive
+but cannot talk to the outside world.</p></section><section class="lustre-ui-stack"><div id="application" class="lustre-ui-aside align-centre"><h3>application</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn application(
+  init: fn(flags) -&gt; #(model, Effect(msg)),
+  update: fn(model, msg) -&gt; #(model, Effect(msg)),
+  view: fn(model) -&gt; Element(msg)
+) -&gt; App(flags, model, msg)
+</code></pre><p>The `application` constructor is the most complete way to build a Lustre app. As
+with <a href="#simple">`simple`</a> it uses the Model-View-Update architecture, but now your
+init and update functions can return side effects to be performed by the runtime
+in the form of an <a href="/api/lustre/effect#effect-type">`Effect`</a>.</p></section><section class="lustre-ui-stack"><div id="start" class="lustre-ui-aside align-centre"><h3>start</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn start(
+  app: App(flags, model, msg),
+  selector: String,
+  flags: flags,
+) -&gt; Result(fn(msg) -&gt; Nil, Error)
+</code></pre><p>Start an application by providing a CSS selector to find the element to mount the
+application onto and any flags to pass to the application on first init. This
+function returns a `Result` and may fail for a number of reasons. Check out the
+<a href="#error-type">`Error`</a> type for more information.</p></section><section class="lustre-ui-stack"><div id="destroy" class="lustre-ui-aside align-centre"><h3>destroy</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn destroy(app: App(flags, model, msg)) -&gt; Result(Nil, Error)
+</code></pre><p>Tear down a running application and remove it from the DOM. This can fail if the
+application has not yet been started.</p></section><section class="lustre-ui-stack"><div id="components" class="lustre-ui-aside align-centre"><h2>Components</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Components take the same Model-View-Update building blocks used to create Lustre
+applications and allow them to be used as reusable stateful components. This is
+slightly different to how components are used in other frameworks like React
+where &quot;component&quot; refers more generally to any reusable piece of UI.</p><p>In Lustre, functions that return an `Element` are known as &quot;view functions&quot; and
+components are more specific abstractions that encapsulate state and behaviour
+you might not want to deal with in your top-level application.</p><p>Resist the urge to reach for components too early. The Elm community has managed
+to make do without components at all: you can get surprisingly far storing state
+in your top level application and passing it down to different view functions.
+This comes with the added benefit of it being much easier to reason about your
+UI as a whole.</p></section><section class="lustre-ui-stack"><div id="component" class="lustre-ui-aside align-centre"><h3>component</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn component(
+  name: String,
+  init: fn() -&gt; #(model, Effect(msg)),
+  update: fn(model, msg) -&gt; #(model, Effect(msg)),
+  view: fn(model) -&gt; Element(msg),
+  on_attribute_change: Map(String, Decoder(msg)),
+) -&gt; Result(Nil, Error)
+</code></pre><p>Register a component with the runtime from the familiar Model-View-Update building
+blocks. Compared to an application, we have two additional arguments:</p><p>- A name for the component. This name must follow the same rules laid out in the
+  <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name">custom element spec</a>
+  and should contain a hyphen (`-`) to avoid clashes with built-in HTML elements.
+- A map of attribute names to listen for changes to and a decoder for each to
+  decode those attributes into messages to send to your component&#39;s `update`
+  function.</p><p>If it feels like the API for registering components is a little more verbose than
+you&#39;re used to, that&#39;s because it is! You can get surprisingly far storing state
+in your top level application and passing it down to different view functions
+without needing to use components at all. In fact, for communities like Elm this
+is the _only_ way to do things.</p></section><section class="lustre-ui-stack"><div id="utilities" class="lustre-ui-aside align-centre"><h2>Utilities</h2><div aria-hidden="true" class="lustre-ui-cluster"></div></div><div id="is_browser" class="lustre-ui-aside align-centre"><h3>is_browser</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn is_browser() -&gt; Bool
+</code></pre><p>Gleam has conditional compilation depending on whether you are targetting Erlang
+or JavaScript, but sometimes you want to be a bit more specific than that and
+check if you&#39;re running in the browser.</p><p>This is a runtime check that will tell you just that. You could use this to create
+a view function that renders something simple on the backend but more complex or
+interactive on the frontend.</p></section><section class="lustre-ui-stack"><div id="is_registered" class="lustre-ui-aside align-centre"><h3>is_registered</h3><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">erlang</span><span class="lustre-ui-tag">javascript</span></div></div><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">pub fn is_registered(name: String) -&gt; Bool
+</code></pre><p>Lustre&#39;s components are built directly on the
+<a href="https://html.spec.whatwg.org/multipage/custom-elements.html">custom element spec</a>
+which means they share the same global registery as other custom elements. This
+function can tell you if the name you want to use is already registered, by another
+Lustre component or otherwise.</p></section></div></main><div class="lustre-ui-stack lustre-ui-box"><div class="lustre-ui-stack packed"><a href="#lustre">lustre</a></div><div class="lustre-ui-stack packed"><a href="#applications">Applications</a></div><div class="lustre-ui-stack packed"><a href="#app-type">App</a><a href="#error-type">Error</a><a href="#element">element</a><a href="#simple">simple</a><a href="#application">application</a><a href="#start">start</a><a href="#destroy">destroy</a></div><div class="lustre-ui-stack packed"><a href="#components">Components</a></div><div class="lustre-ui-stack packed"><a href="#component">component</a></div><div class="lustre-ui-stack packed"><a href="#utilities">Utilities</a></div><div class="lustre-ui-stack packed"><a href="#is_browser">is_browser</a><a href="#is_registered">is_registered</a></div></div></div><div class="lustre-ui-stack lustre-ui-box loose"><h2>Lustre.</h2><nav class="lustre-ui-stack tight"><h3>Reference</h3><a href="/api/lustre">lustre</a><a href="/api/lustre/attribute">lustre/attribute</a><a href="/api/lustre/effect">lustre/effect</a><a href="/api/lustre/element">lustre/element</a><a href="/api/lustre/element/html">lustre/element/html</a><a href="/api/lustre/element/svg">lustre/element/svg</a><a href="/api/lustre/event">lustre/event</a></nav><nav class="lustre-ui-stack tight"><h3>Tutorial</h3><a href="/docs/quickstart">Quickstart</a><a href="/docs/managing-state">Managing state</a><a href="/docs/side-effects">Side effects</a><a href="/docs/server-side-rendering">Server-side rendering</a><a href="/docs/components">Components</a></nav><nav class="lustre-ui-stack tight"><h3>Guides</h3><a href="/guides/wisp">Integrating with Wisp</a></nav></div></div></body></html>
