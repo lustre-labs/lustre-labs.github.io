@@ -40,51 +40,14 @@ about it over at [gleam.run](https://gleam.run).
 $ gleam new lustre_quickstart && cd lustre_quickstart && gleam add lustre
 ```
 
-In a real project you probably want to use a build tool like [vite](https://vitejs.dev)
-along with the [vite-gleam](https://github.com/Enderchief/vite-gleam) plugin, but
-to keep this guide simple we'll just show you what code you need to write and leave
-the details on serving the app up to you. MDN have a handy guide covering some
-different options to [set up a local web server for development](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server)
-if you need some ideas.
-
-### Basic HTML setup
-
-With our Gleam project scaffolded, go ahead and create an `index.html` in the root
-of the project. This is the minimal code you'll typically want to get started:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lustre Quickstart</title>
-
-    <script type="module">
-      import { main } from "./build/dev/javascript/lustre_quickstart/app.mjs";
-
-      document.addEventListener("DOMContentLoaded", () => {
-        main();
-      });
-    </script>
-  </head>
-
-  <body>
-    <div data-lustre-app></div>
-  </body>
-</html>
-```
-
-We wait until the DOM has loaded before calling the our app's `main` function.
-This will mount the Lustre app and start rendering. We also add the `data-lustre-app`
-attribute to the element we want to mount the app to. You could use a class or an
-id instead, or none of that: [`lustre.start`](/api/lustre#start) takes a CSS
-selector so go wild!
+This will create a new Gleam project and then add the only dependency we need,
+Lustre. Make sure to add `target = "javascript" to your `gleam.toml` to ensure
+we're building a client-side application.
 
 ### Hello, world!
 
-Go ahead and rename the generated `lustre_quickstart.gleam` file to `app.gleam`
-and replace the contents with the following:
+Replace the contents of the generated `lustre_quickstart.gleam` file with the
+following:
 
 ```gleam
 import lustre
@@ -98,21 +61,29 @@ pub fn main() {
 }
 ```
 
-This will create a static Lustre app and mount it onto the element that matches
-the CSS selector. While we're asserting everything is OK here, it is possible
-for [`lustre.start`](/api/lustre#start) to fail in a couple of ways. Check
-out the docs for the [`lustre.Error`](/api/lustre#error-type) type if you
-want to know more.
+Two things are happening here. First, we're creating the simplest type of Lustre
+application: a static element. Then, we mount that application onto the first
+DOM node that matches the `[data-lustre-app]` CSS selector. In other types of
+application, the third argument to `lustre.start` represents any start arguments
+or initial state to pass to your application's `init` function. In this case, we
+don't have one so we pass in `Nil` instead.
 
-Run `gleam build` and serve the HTML with your preferred static file server (this
-step is necessary: JavaScript modules can't be imported when just opening a HTML
-file) and admire your handiwork.
+In a more realistic application, you'll likely want to use the [vite](https://vitejs.dev)
+bundler along with the [vite-gleam](https://github.com/Enderchief/gleam-tools/tree/master/packages/vite-gleam)
+plugin but to get folks started quickly Lustre comes with a simple preview server
+built-in. 
+
+First run `gleam build` to ensure your app is compiled. Then, depending on your
+preferred platform, run `gleam run -m lustre/try --target erlang` or
+`gleam run -m lustre/try --target javascript` to start the preview server and
+head over to `localhost:8080`. If all goes well, you should see "Hello, world!"
+on the page!
 
 ### Adding interactivity
 
 Now that we know how to get things up and running, let's try something a little
-more exciting and add some interactivity. Replace the contents of your `app.gleam`
-file with the code below and rebuild the project.
+more exciting and add some interactivity. Replace the contents of your 
+`lustre_quickstart.gleam` file with the following:
 
 ```gleam
 import gleam/int
@@ -162,7 +133,8 @@ boil down to the same three parts:
   `init` it.
 - A `Msg` type and an `update` function to update that state based on incoming
   messages.
-- A `view` function that takes the current state and renders some HTML.
+- A `view` function that takes the current state and returns a Lustre element
+  that can be rendered to the DOM.
 
 This architecture is not unique to Lustre. It was introduced by the Elm community
 and known as the [Elm Architecture](https://guide.elm-lang.org/architecture/)
@@ -218,70 +190,3 @@ or [Wisp](/guides/wisp) to serve the HTML to the browser or write it to a file
 using [simplifile](https://hexdocs.pm/simplifile/). Because the API is the same
 for both client and server rendering, it is easy to create reusable components
 that can be rendered anywhere Gleam can run!
-
-### An example with Wisp
-
-Before we go, let's just take a quick look at what it would look like to use
-Lustre in a [Wisp](https://hexdocs.pm/wisp) application. We won't scaffold out a
-real app in this example, but we'll adapt one of the examples from Wisp's own
-documentation.
-
-Specifically, we'll take a look at the `show_form` function from the
-["working with form data"](https://github.com/lpil/wisp/blob/ea8a40bc20745f172695c8cc2dc0a63769f890a7/examples/2-working-with-form-data/src/app/router.gleam#L20)
-example:
-
-```gleam
-...
-
-pub fn show_form() {
-  // In a larger application a template library or HTML form library might
-  // be used here instead of a string literal.
-  let html =
-    string_builder.from_string(
-      "<form method='post'>
-        <label>Title:
-          <input type='text' name='title'>
-        </label>
-        <label>Name:
-          <input type='text' name='name'>
-        </label>
-        <input type='submit' value='Submit'>
-      </form>",
-    )
-  wisp.ok()
-  |> wisp.html_body(html)
-}
-```
-
-They've helpfully left a comment telling us that in a larger application we might
-want to use a template library, and Lustre is up to the task! Let's refactor this
-using Lustre:
-
-```gleam
-import gleam/string
-import lustre/attribute.{attribute}
-import lustre/element
-import lustre/element/html
-...
-
-pub fn show_form() {
-  html.form([attribute("method", "post")], [
-    labelled_input("Title"),
-    labelled_input("Name"),
-    html.input([attribute("type", "submit"), attribute("value", "Submit")])
-  ])
-  |> element.to_string_builder
-  |> wisp.html_body
-  |> wisp.ok
-}
-
-fn labelled_input(name) {
-  html.label([], [
-    element.text(name <> ": "),
-    html.input([
-      attribute("type", "text"),
-      attribute("name", string.lowercase(name))
-    ])
-  ])
-}
-```
