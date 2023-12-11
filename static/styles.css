@@ -85,7 +85,51 @@ kick in. */
   /* Although this selector looks kind of funky, it's written this way so that
   we don't have to know what the display property of these navs is set to 
   normally. */
-  .dropdown:has(.toggle:not(:checked)) nav {
+  .dropdown:has(.toggle input:not(:checked)) nav {
     display: none;
+  }
+}
+
+/* HAMBURGER MENU BUTTON ---------------------------------------------------- */
+
+.toggle {
+  --bg-hover: var(--element-background);
+  --border: var(--element-border-subtle);
+  --text: var(--text-high-contrast);
+  --padding: var(--space-xs);
+
+  position: relative;
+  outline: 1px solid transparent;
+  border-radius: var(--border-radius);
+  color: var(--text);
+  padding: var(--padding) var(--padding);
+
+  &:hover,
+  &:active {
+    background-color: var(--bg-hover);
+  }
+
+  &:focus-within {
+    outline-color: var(--border);
+  }
+
+  & > input {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  & > .close,
+  & > input:checked ~ .open {
+    display: none;
+  }
+
+  & > .open,
+  & > input:checked ~ .close {
+    display: block;
   }
 }

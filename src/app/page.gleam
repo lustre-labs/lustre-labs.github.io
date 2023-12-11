@@ -19,6 +19,7 @@ import lustre/ui
 import lustre/ui/aside
 import lustre/ui/box
 import lustre/ui/stack
+import lustre/ui/icon
 import tom
 
 pub fn render(content: String) -> #(Metadata, Element(Nil)) {
@@ -117,7 +118,7 @@ fn template(
       ui.aside(
         [aside.content_last()],
         ui.aside(
-          [],
+          [aside.min_width(80)],
           box.of(html.main, [], [
             ui.stack(
               [stack.loose()],
@@ -132,9 +133,10 @@ fn template(
               html.h2,
               [aside.align_centre()],
               html.p([], [element.text("Lustre.")]),
-              html.input([
-                attribute.type_("checkbox"),
-                attribute.class("toggle"),
+              html.label([attribute.class("toggle")], [
+                html.input([attribute.type_("checkbox")]),
+                icon.hamburger_menu([attribute.class("open")]),
+                icon.cross([attribute.class("close")]),
               ]),
             ),
             stack.of(html.nav, [stack.tight()], [
