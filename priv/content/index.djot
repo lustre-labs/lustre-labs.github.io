@@ -1,0 +1,192 @@
+title = "Quickstart"
+route = "/"
+
+description = ""
+
+---
+
+# Quickstart
+
+Lustre is a frontend web framework for Gleam. It is primarily focused on helping
+you build robust single-page applications (SPAs), but it can also be used on the
+server to render static HTML. To get an idea of what it's all about, here's a
+quick overview of Lustre's key features:
+
+• Elm-inspired runtime with state management and controlled side effects out of
+  the box.
+
+
+• A simple, declarative API for building type-safe user interfaces.
+
+
+• Stateful components built as custom elements and useable just like any other
+  HTML element.
+
+
+• Static HTML rendering anywhere Gleam can run: the BEAM, Node.js, Deno, or the
+  browser.
+
+In this quickstart guide we'll take a look at how to get up and running with
+Lustre in both the browser and on the server.
+
+{target=javascript}
+## In the browser
+
+To get started, we'll scaffold a new Gleam project using `gleam new`. If you've
+found your way to this guide but don't already know what Gleam is you can read
+about it over at [gleam.run](https://gleam.run).
+
+```shell
+$ gleam new lustre_quickstart && cd lustre_quickstart && gleam add lustre
+```
+
+This will create a new Gleam project and then add the only dependency we need,
+Lustre. Make sure to add `target = "javascript" to your `gleam.toml` to ensure
+we're building a client-side application.
+
+### Hello, world!
+
+Replace the contents of the generated `lustre_quickstart.gleam` file with the
+following:
+
+```gleam
+import lustre
+import lustre/element.{text}
+
+pub fn main() {
+  let app = lustre.element(text("Hello, world!"))
+  let assert Ok(_) = lustre.start(app, "[data-lustre-app]", Nil)
+
+  Nil
+}
+```
+
+Two things are happening here. First, we're creating the simplest type of Lustre
+application: a static element. Then, we mount that application onto the first
+DOM node that matches the `[data-lustre-app]` CSS selector. In other types of
+application, the third argument to `lustre.start` represents any start arguments
+or initial state to pass to your application's `init` function. In this case, we
+don't have one so we pass in `Nil` instead.
+
+In a more realistic application, you'll likely want to use the [vite](https://vitejs.dev)
+bundler along with the [vite-gleam](https://github.com/Enderchief/gleam-tools/tree/master/packages/vite-gleam)
+plugin but to get folks started quickly Lustre comes with a simple preview server
+built-in. 
+
+First run `gleam build` to ensure your app is compiled. Then, depending on your
+preferred platform, run `gleam run -m lustre/try --target erlang` or
+`gleam run -m lustre/try --target javascript` to start the preview server and
+head over to `localhost:8080`. If all goes well, you should see "Hello, world!"
+on the page!
+
+### Adding interactivity
+
+Now that we know how to get things up and running, let's try something a little
+more exciting and add some interactivity. Replace the contents of your 
+`lustre_quickstart.gleam` file with the following:
+
+```gleam
+import gleam/int
+import lustre
+import lustre/element.{text}
+import lustre/element/html.{div, button, p}
+import lustre/event.{on_click}
+
+pub fn main() {
+  let app = lustre.simple(init, update, view)
+  let assert Ok(_) = lustre.start(app, "[data-lustre-app]", Nil)
+
+  Nil
+}
+
+fn init(_) {
+  0
+}
+
+type Msg {
+  Incr
+  Decr
+}
+
+fn update(model, msg) {
+  case msg {
+    Incr -> model + 1
+    Decr -> model - 1
+  }
+}
+
+fn view(model) {
+  let count = int.to_string(model)
+
+  div([], [
+    button([on_click(Decr)], [text(" - ")]),
+    p([], [text(count)]),
+    button([on_click(Incr)], [text(" + ")])
+  ])
+}
+```
+
+You should now have a very exciting counter app! Almost every Lustre app will
+boil down to the same three parts:
+
+- A `Model` type that represents your application's state and a function to
+  `init` it.
+- A `Msg` type and an `update` function to update that state based on incoming
+  messages.
+- A `view` function that takes the current state and returns a Lustre element
+  that can be rendered to the DOM.
+
+This architecture is not unique to Lustre. It was introduced by the Elm community
+and known as the [Elm Architecture](https://guide.elm-lang.org/architecture/)
+before making its way to React as [Redux](https://redux.js.org) and beyond, known
+more generally as the Model-View-Update architecture. If you work through the
+rest of our guides you'll see how this architecture helps keep side effects out
+of our view code and how to create components that can encapsulate their own state
+and update logic.
+
+For now though, we'll leave things here. If you're interested in seeing how Lustre
+can be used to render static HTML on the server, read on! Otherwise, you can take
+this counter application as a base and start building something of your own.
+
+{target=erlang javascript}
+## On the server
+
+As we've seen, Lustre is primarily meant to be used in the browser to build
+interactive SPAs. It is possible to render Lustre elements to static HTML and
+simply use Lustre as a templating DSL. As before, we'll start by scaffolding a
+new Gleam project and adding Lustre as a dependency:
+
+```shell
+$ gleam new lustre_quickstart && cd lustre_quickstart && gleam add lustre
+```
+
+The [`lustre/element`](/api/lustre/element) module contains functions to
+render an element as either a `String` or `StringBuilder`. Copy the following code
+into `lustre_quickstart.gleam`:
+
+```gleam
+import gleam/io
+import lustre/attribute.{attribute}
+import lustre/element.{text}
+import lustre/element/html.{html, head, title, body, div, h1}
+
+pub fn main() {
+  html([attribute("lang", "en")], [
+    head([], [
+     title([], [text("Lustre Quickstart")])
+    ]),
+    body([], [
+      h1([], [text("Hello, world!")])
+    ])
+  ])
+  |> element.to_string
+  |> io.println
+}
+```
+
+We can test this out by running `gleam run` and seeing the HTML printed to the
+console. From here we could set up a web server using [Mist](/guides/mist)
+or [Wisp](/guides/wisp) to serve the HTML to the browser or write it to a file
+using [simplifile](https://hexdocs.pm/simplifile/). Because the API is the same
+for both client and server rendering, it is easy to create reusable components
+that can be rendered anywhere Gleam can run!
