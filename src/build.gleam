@@ -24,7 +24,7 @@ pub fn main() {
   use css <- try_simplifile(simplifile.read(lustre_ui_styles))
   use _ <- try_simplifile(simplifile.write("./static/lustre-ui.css", css))
 
-  use content <- try_simplifile(simplifile.get_files("./src/content"))
+  use content <- try_simplifile(simplifile.get_files("./priv/content"))
   use site <- try({
     use site, path <- list.try_fold(content, site)
     use <- bool.guard(!string.ends_with(path, ".djot"), Ok(site))
