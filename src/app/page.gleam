@@ -4,6 +4,7 @@ import app/djot.{
   type Container, type Document, type Inline, Codeblock, Document, Heading, Link,
   Paragraph, Reference, Text, Url,
 }
+import gleam/bool
 import gleam/dict.{type Dict}
 import gleam/function
 import gleam/list
@@ -123,54 +124,64 @@ fn template(
               list.map(content, stack.of(html.section, [], _)),
             ),
           ]),
-          box.of(ui.stack, [], render_summary(summary)),
+          box.of(ui.stack, [stack.tight()], render_summary(summary)),
         ),
-        box.of(ui.stack, [stack.loose()], [
-          html.h2([], [element.text("Lustre.")]),
-          stack.of(html.nav, [stack.tight()], [
-            html.h3([], [element.text("Reference")]),
-            html.a([attribute.href("/api/lustre")], [element.text("lustre")]),
-            html.a([attribute.href("/api/lustre/attribute")], [
-              element.text("lustre/attribute"),
+        ui.box([attribute.class("dropdown")], [
+          ui.stack([stack.loose()], [
+            aside.of(
+              html.h2,
+              [aside.align_centre()],
+              html.p([], [element.text("Lustre.")]),
+              html.input([
+                attribute.type_("checkbox"),
+                attribute.class("toggle"),
+              ]),
+            ),
+            stack.of(html.nav, [stack.tight()], [
+              html.h3([], [element.text("Reference")]),
+              html.a([attribute.href("/api/lustre")], [element.text("lustre")]),
+              html.a([attribute.href("/api/lustre/attribute")], [
+                element.text("lustre/attribute"),
+              ]),
+              html.a([attribute.href("/api/lustre/effect")], [
+                element.text("lustre/effect"),
+              ]),
+              html.a([attribute.href("/api/lustre/element")], [
+                element.text("lustre/element"),
+              ]),
+              html.a([attribute.href("/api/lustre/element/html")], [
+                element.text("lustre/element/html"),
+              ]),
+              html.a([attribute.href("/api/lustre/element/svg")], [
+                element.text("lustre/element/svg"),
+              ]),
+              html.a([attribute.href("/api/lustre/event")], [
+                element.text("lustre/event"),
+              ]),
             ]),
-            html.a([attribute.href("/api/lustre/effect")], [
-              element.text("lustre/effect"),
+            stack.of(html.nav, [stack.tight()], [
+              html.h3([], [element.text("Tutorial")]),
+              html.a([attribute.href("/docs/quickstart")], [
+                element.text("Quickstart"),
+              ]),
+              html.a([attribute.href("/docs/managing-state")], [
+                element.text("Managing state"),
+              ]),
+              html.a([attribute.href("/docs/side-effects")], [
+                element.text("Side effects"),
+              ]),
+              html.a([attribute.href("/docs/server-side-rendering")], [
+                element.text("Server-side rendering"),
+              ]),
+              html.a([attribute.href("/docs/components")], [
+                element.text("Components"),
+              ]),
             ]),
-            html.a([attribute.href("/api/lustre/element")], [
-              element.text("lustre/element"),
-            ]),
-            html.a([attribute.href("/api/lustre/element/html")], [
-              element.text("lustre/element/html"),
-            ]),
-            html.a([attribute.href("/api/lustre/element/svg")], [
-              element.text("lustre/element/svg"),
-            ]),
-            html.a([attribute.href("/api/lustre/event")], [
-              element.text("lustre/event"),
-            ]),
-          ]),
-          stack.of(html.nav, [stack.tight()], [
-            html.h3([], [element.text("Tutorial")]),
-            html.a([attribute.href("/docs/quickstart")], [
-              element.text("Quickstart"),
-            ]),
-            html.a([attribute.href("/docs/managing-state")], [
-              element.text("Managing state"),
-            ]),
-            html.a([attribute.href("/docs/side-effects")], [
-              element.text("Side effects"),
-            ]),
-            html.a([attribute.href("/docs/server-side-rendering")], [
-              element.text("Server-side rendering"),
-            ]),
-            html.a([attribute.href("/docs/components")], [
-              element.text("Components"),
-            ]),
-          ]),
-          stack.of(html.nav, [stack.tight()], [
-            html.h3([], [element.text("Guides")]),
-            html.a([attribute.href("/guides/wisp")], [
-              element.text("Integrating with Wisp"),
+            stack.of(html.nav, [stack.tight()], [
+              html.h3([], [element.text("Guides")]),
+              html.a([attribute.href("/guides/wisp")], [
+                element.text("Integrating with Wisp"),
+              ]),
             ]),
           ]),
         ]),
@@ -186,14 +197,13 @@ fn render_summary(
   let chunks = list.chunk(headings, level)
   use headings <- list.map(chunks)
 
-  ui.stack(
-    [stack.packed()],
-    list.map(headings, fn(heading) {
-      let href = "#" <> section_id(heading.0, heading.1, heading.2)
+  ui.stack([stack.packed()], {
+    use heading <- list.filter_map(headings)
+    use <- bool.guard(heading.1 == 1, Error(Nil))
+    let href = "#" <> section_id(heading.0, heading.1, heading.2)
 
-      html.a([attribute("href", href)], list.map(heading.2, render_inline))
-    }),
-  )
+    Ok(html.a([attribute("href", href)], list.map(heading.2, render_inline)))
+  })
 }
 
 // DJOT RENDERERS --------------------------------------------------------------

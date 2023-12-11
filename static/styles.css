@@ -53,3 +53,39 @@ pre code {
   padding: 0 !important;
   background: transparent !important;
 }
+
+/* MOBILE NAV --------------------------------------------------------------- */
+
+/* Sets the parent of the .dropdown side bar to be a container. */
+*:has(.dropdown) {
+  container-name: dropdown;
+  container-type: inline-size;
+}
+
+.dropdown .toggle {
+  display: none;
+}
+
+/* When the dropdown container is 100% of its parent container, this query will
+kick in. */
+@container dropdown (inline-size: 100cqi) {
+  .dropdown {
+    background-color: var(--app-background);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .dropdown .toggle {
+    display: block;
+  }
+
+  /* Although this selector looks kind of funky, it's written this way so that
+  we don't have to know what the display property of these navs is set to 
+  normally. */
+  .dropdown:has(.toggle:not(:checked)) nav {
+    display: none;
+  }
+}
