@@ -1,4 +1,4 @@
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lustre - catchy tagline.</title><meta property="og:type" content="article"><meta property="og:title" content="Components"><meta property="og:url" content="https://lustre.build/docs/quickstart"><meta property="og:description" content=""><link rel="stylesheet" href="/lustre-ui.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@300&display=swap"><script type="module" src="/app.js"></script></head><body><div class="lustre-ui-aside content-last"><div class="lustre-ui-aside"><main class="lustre-ui-box"><div class="lustre-ui-stack loose"><section class="lustre-ui-stack"><div id="quickstart" class="lustre-ui-aside align-centre"><h1>Quickstart</h1><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Lustre is a frontend web framework for Gleam. It is primarily focused on helping
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lustre - catchy tagline.</title><meta property="og:type" content="article"><meta property="og:title" content="Components"><meta property="og:url" content="https://lustre.build/docs/quickstart"><meta property="og:description" content=""><link rel="stylesheet" href="/lustre-ui.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@300&display=swap"><script type="module" src="/app.js"></script></head><body><div class="lustre-ui-aside content-last"><div class="lustre-ui-aside" style="--min:80%;"><main class="lustre-ui-box"><div class="lustre-ui-stack loose"><section class="lustre-ui-stack"><div id="quickstart" class="lustre-ui-aside align-centre"><h1>Quickstart</h1><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Lustre is a frontend web framework for Gleam. It is primarily focused on helping
 you build robust single-page applications (SPAs), but it can also be used on the
 server to render static HTML. To get an idea of what it&#39;s all about, here&#39;s a
 quick overview of Lustre&#39;s key features:</p><p>• Elm-inspired runtime with state management and controlled side effects out of
@@ -8,38 +8,10 @@ quick overview of Lustre&#39;s key features:</p><p>• Elm-inspired runtime with
 Lustre in both the browser and on the server.</p></section><section class="lustre-ui-stack"><div id="in-the-browser" class="lustre-ui-aside align-centre"><h2>In the browser</h2><div aria-hidden="true" class="lustre-ui-cluster"><span class="lustre-ui-tag">javascript</span></div></div><p>To get started, we&#39;ll scaffold a new Gleam project using `gleam new`. If you&#39;ve
 found your way to this guide but don&#39;t already know what Gleam is you can read
 about it over at <a href="https://gleam.run">gleam.run</a>.</p><pre class="lustre-ui-box"><code data-lang="shell" class="language-shell">$ gleam new lustre_quickstart &amp;&amp; cd lustre_quickstart &amp;&amp; gleam add lustre
-</code></pre><p>In a real project you probably want to use a build tool like <a href="https://vitejs.dev">vite</a>
-along with the <a href="https://github.com/Enderchief/vite-gleam">vite-gleam</a> plugin, but
-to keep this guide simple we&#39;ll just show you what code you need to write and leave
-the details on serving the app up to you. MDN have a handy guide covering some
-different options to <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server">set up a local web server for development</a>
-if you need some ideas.</p></section><section class="lustre-ui-stack"><div id="basic-html-setup" class="lustre-ui-aside align-centre"><h3>Basic HTML setup</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>With our Gleam project scaffolded, go ahead and create an `index.html` in the root
-of the project. This is the minimal code you&#39;ll typically want to get started:</p><pre class="lustre-ui-box"><code data-lang="html" class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;Lustre Quickstart&lt;/title&gt;
-
-    &lt;script type=&quot;module&quot;&gt;
-      import { main } from &quot;./build/dev/javascript/lustre_quickstart/app.mjs&quot;;
-
-      document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
-        main();
-      });
-    &lt;/script&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;div data-lustre-app&gt;&lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>We wait until the DOM has loaded before calling the our app&#39;s `main` function.
-This will mount the Lustre app and start rendering. We also add the `data-lustre-app`
-attribute to the element we want to mount the app to. You could use a class or an
-id instead, or none of that: <a href="/api/lustre#start">`lustre.start`</a> takes a CSS
-selector so go wild!</p></section><section class="lustre-ui-stack"><div id="hello,-world!" class="lustre-ui-aside align-centre"><h3>Hello, world!</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Go ahead and rename the generated `lustre_quickstart.gleam` file to `app.gleam`
-and replace the contents with the following:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import lustre
+</code></pre><p>This will create a new Gleam project and then add the only dependency we need,
+Lustre. Make sure to add `target = &quot;javascript&quot; to your `gleam.toml` to ensure
+we&#39;re building a client-side application.</p></section><section class="lustre-ui-stack"><div id="hello,-world!" class="lustre-ui-aside align-centre"><h3>Hello, world!</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Replace the contents of the generated `lustre_quickstart.gleam` file with the
+following:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import lustre
 import lustre/element.{text}
 
 pub fn main() {
@@ -48,15 +20,21 @@ pub fn main() {
 
   Nil
 }
-</code></pre><p>This will create a static Lustre app and mount it onto the element that matches
-the CSS selector. While we&#39;re asserting everything is OK here, it is possible
-for <a href="/api/lustre#start">`lustre.start`</a> to fail in a couple of ways. Check
-out the docs for the <a href="/api/lustre#error-type">`lustre.Error`</a> type if you
-want to know more.</p><p>Run `gleam build` and serve the HTML with your preferred static file server (this
-step is necessary: JavaScript modules can&#39;t be imported when just opening a HTML
-file) and admire your handiwork.</p></section><section class="lustre-ui-stack"><div id="adding-interactivity" class="lustre-ui-aside align-centre"><h3>Adding interactivity</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Now that we know how to get things up and running, let&#39;s try something a little
-more exciting and add some interactivity. Replace the contents of your `app.gleam`
-file with the code below and rebuild the project.</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import gleam/int
+</code></pre><p>Two things are happening here. First, we&#39;re creating the simplest type of Lustre
+application: a static element. Then, we mount that application onto the first
+DOM node that matches the `[data-lustre-app]` CSS selector. In other types of
+application, the third argument to `lustre.start` represents any start arguments
+or initial state to pass to your application&#39;s `init` function. In this case, we
+don&#39;t have one so we pass in `Nil` instead.</p><p>In a more realistic application, you&#39;ll likely want to use the <a href="https://vitejs.dev">vite</a>
+bundler along with the <a href="https://github.com/Enderchief/gleam-tools/tree/master/packages/vite-gleam">vite-gleam</a>
+plugin but to get folks started quickly Lustre comes with a simple preview server
+built-in. </p><p>First run `gleam build` to ensure your app is compiled. Then, depending on your
+preferred platform, run `gleam run -m lustre/try --target erlang` or
+`gleam run -m lustre/try --target javascript` to start the preview server and
+head over to `localhost:8080`. If all goes well, you should see &quot;Hello, world!&quot;
+on the page!</p></section><section class="lustre-ui-stack"><div id="adding-interactivity" class="lustre-ui-aside align-centre"><h3>Adding interactivity</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Now that we know how to get things up and running, let&#39;s try something a little
+more exciting and add some interactivity. Replace the contents of your 
+`lustre_quickstart.gleam` file with the following:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import gleam/int
 import lustre
 import lustre/element.{text}
 import lustre/element/html.{div, button, p}
@@ -99,7 +77,8 @@ boil down to the same three parts:</p><p>- A `Model` type that represents your a
   `init` it.
 - A `Msg` type and an `update` function to update that state based on incoming
   messages.
-- A `view` function that takes the current state and renders some HTML.</p><p>This architecture is not unique to Lustre. It was introduced by the Elm community
+- A `view` function that takes the current state and returns a Lustre element
+  that can be rendered to the DOM.</p><p>This architecture is not unique to Lustre. It was introduced by the Elm community
 and known as the <a href="https://guide.elm-lang.org/architecture/">Elm Architecture</a>
 before making its way to React as <a href="https://redux.js.org">Redux</a> and beyond, known
 more generally as the Model-View-Update architecture. If you work through the
@@ -135,57 +114,4 @@ console. From here we could set up a web server using <a href="/guides/mist">Mis
 or <a href="/guides/wisp">Wisp</a> to serve the HTML to the browser or write it to a file
 using <a href="https://hexdocs.pm/simplifile/">simplifile</a>. Because the API is the same
 for both client and server rendering, it is easy to create reusable components
-that can be rendered anywhere Gleam can run!</p></section><section class="lustre-ui-stack"><div id="an-example-with-wisp" class="lustre-ui-aside align-centre"><h3>An example with Wisp</h3><div aria-hidden="true" class="lustre-ui-cluster"></div></div><p>Before we go, let&#39;s just take a quick look at what it would look like to use
-Lustre in a <a href="https://hexdocs.pm/wisp">Wisp</a> application. We won&#39;t scaffold out a
-real app in this example, but we&#39;ll adapt one of the examples from Wisp&#39;s own
-documentation.</p><p>Specifically, we&#39;ll take a look at the `show_form` function from the
-<a href="https://github.com/lpil/wisp/blob/ea8a40bc20745f172695c8cc2dc0a63769f890a7/examples/2-working-with-form-data/src/app/router.gleam#L20">&quot;working with form data&quot;</a>
-example:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">...
-
-pub fn show_form() {
-  // In a larger application a template library or HTML form library might
-  // be used here instead of a string literal.
-  let html =
-    string_builder.from_string(
-      &quot;&lt;form method=&#39;post&#39;&gt;
-        &lt;label&gt;Title:
-          &lt;input type=&#39;text&#39; name=&#39;title&#39;&gt;
-        &lt;/label&gt;
-        &lt;label&gt;Name:
-          &lt;input type=&#39;text&#39; name=&#39;name&#39;&gt;
-        &lt;/label&gt;
-        &lt;input type=&#39;submit&#39; value=&#39;Submit&#39;&gt;
-      &lt;/form&gt;&quot;,
-    )
-  wisp.ok()
-  |&gt; wisp.html_body(html)
-}
-</code></pre><p>They&#39;ve helpfully left a comment telling us that in a larger application we might
-want to use a template library, and Lustre is up to the task! Let&#39;s refactor this
-using Lustre:</p><pre class="lustre-ui-box"><code data-lang="gleam" class="language-gleam">import gleam/string
-import lustre/attribute.{attribute}
-import lustre/element
-import lustre/element/html
-...
-
-pub fn show_form() {
-  html.form([attribute(&quot;method&quot;, &quot;post&quot;)], [
-    labelled_input(&quot;Title&quot;),
-    labelled_input(&quot;Name&quot;),
-    html.input([attribute(&quot;type&quot;, &quot;submit&quot;), attribute(&quot;value&quot;, &quot;Submit&quot;)])
-  ])
-  |&gt; element.to_string_builder
-  |&gt; wisp.html_body
-  |&gt; wisp.ok
-}
-
-fn labelled_input(name) {
-  html.label([], [
-    element.text(name &lt;&gt; &quot;: &quot;),
-    html.input([
-      attribute(&quot;type&quot;, &quot;text&quot;),
-      attribute(&quot;name&quot;, string.lowercase(name))
-    ])
-  ])
-}
-</code></pre></section></div></main><div class="lustre-ui-stack lustre-ui-box"><div class="lustre-ui-stack packed"><a href="#quickstart">Quickstart</a></div><div class="lustre-ui-stack packed"><a href="#in-the-browser">In the browser</a></div><div class="lustre-ui-stack packed"><a href="#basic-html-setup">Basic HTML setup</a><a href="#hello,-world!">Hello, world!</a><a href="#adding-interactivity">Adding interactivity</a></div><div class="lustre-ui-stack packed"><a href="#on-the-server">On the server</a></div><div class="lustre-ui-stack packed"><a href="#an-example-with-wisp">An example with Wisp</a></div></div></div><div class="lustre-ui-stack lustre-ui-box loose"><h2>Lustre.</h2><nav class="lustre-ui-stack tight"><h3>Reference</h3><a href="/api/lustre">lustre</a><a href="/api/lustre/attribute">lustre/attribute</a><a href="/api/lustre/effect">lustre/effect</a><a href="/api/lustre/element">lustre/element</a><a href="/api/lustre/element/html">lustre/element/html</a><a href="/api/lustre/element/svg">lustre/element/svg</a><a href="/api/lustre/event">lustre/event</a></nav><nav class="lustre-ui-stack tight"><h3>Tutorial</h3><a href="/docs/quickstart">Quickstart</a><a href="/docs/managing-state">Managing state</a><a href="/docs/side-effects">Side effects</a><a href="/docs/server-side-rendering">Server-side rendering</a><a href="/docs/components">Components</a></nav><nav class="lustre-ui-stack tight"><h3>Guides</h3><a href="/guides/wisp">Integrating with Wisp</a></nav></div></div></body></html>
+that can be rendered anywhere Gleam can run!</p></section></div></main><div class="lustre-ui-stack lustre-ui-box tight"><div class="lustre-ui-stack packed"></div><div class="lustre-ui-stack packed"><a href="#in-the-browser">In the browser</a></div><div class="lustre-ui-stack packed"><a href="#hello,-world!">Hello, world!</a><a href="#adding-interactivity">Adding interactivity</a></div><div class="lustre-ui-stack packed"><a href="#on-the-server">On the server</a></div></div></div><div class="lustre-ui-box dropdown"><div class="lustre-ui-stack loose"><h2 class="lustre-ui-aside align-centre"><p>Lustre.</p><label class="toggle"><input type="checkbox"><svg viewBox="0 0 15 15" fill="none" class="lustre-ui-icon open" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" xmlns="http://www.w3.org/2000/svg"></path></svg><svg viewBox="0 0 15 15" fill="none" class="lustre-ui-icon close" xmlns="http://www.w3.org/2000/svg"><path d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" xmlns="http://www.w3.org/2000/svg"></path></svg></label></h2><nav class="lustre-ui-stack tight"><h3>Reference</h3><a href="/api/lustre">lustre</a><a href="/api/lustre/attribute">lustre/attribute</a><a href="/api/lustre/effect">lustre/effect</a><a href="/api/lustre/element">lustre/element</a><a href="/api/lustre/element/html">lustre/element/html</a><a href="/api/lustre/element/svg">lustre/element/svg</a><a href="/api/lustre/event">lustre/event</a></nav><nav class="lustre-ui-stack tight"><h3>Tutorial</h3><a href="/docs/quickstart">Quickstart</a><a href="/docs/managing-state">Managing state</a><a href="/docs/side-effects">Side effects</a><a href="/docs/server-side-rendering">Server-side rendering</a><a href="/docs/components">Components</a></nav><nav class="lustre-ui-stack tight"><h3>Guides</h3><a href="/guides/wisp">Integrating with Wisp</a></nav></div></div></div></body></html>
