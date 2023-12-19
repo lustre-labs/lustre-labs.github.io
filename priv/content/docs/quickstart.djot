@@ -76,7 +76,7 @@ built-in.
 First run `gleam build` to ensure your app is compiled. Then, depending on your
 preferred platform, run `gleam run -m lustre/try --target erlang` or
 `gleam run -m lustre/try --target javascript` to start the preview server and
-head over to `localhost:8080`. If all goes well, you should see "Hello, world!"
+head over to `localhost:1234`. If all goes well, you should see "Hello, world!"
 on the page!
 
 ### Adding interactivity
